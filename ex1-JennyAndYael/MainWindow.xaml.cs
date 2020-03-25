@@ -29,5 +29,10 @@ namespace ex1_JennyAndYael
         {
 
         }
+
+        private void Joystick_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

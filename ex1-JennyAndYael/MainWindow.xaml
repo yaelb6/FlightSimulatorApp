@@ -6,8 +6,26 @@
         xmlns:local="clr-namespace:ex1_JennyAndYael"
         xmlns:Joy ="clr-namespace:ex1_JennyAndYael.View.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="650" Width="900">
     <Grid>
-        <Joy:Joystick  Grid.Column="1" Grid.Row="2"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Column="0" Grid.RowSpan="2">
+            <Button  RenderTransformOrigin="10.764,-3.995" >Map</Button>
+        </Viewbox>
+
+        <Viewbox Grid.Column="1">
+            <Button  RenderTransformOrigin="10.764,-3.995" >Board</Button>
+        </Viewbox>
+
+        <Joy:Joystick Grid.Row="1" Loaded="Joystick_Loaded" Margin="585,10.4,10.2,-5.2" Grid.ColumnSpan="2"/>
+
     </Grid>
 </Window>
