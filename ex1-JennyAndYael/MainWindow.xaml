@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ex1_JennyAndYael"
         xmlns:Joy ="clr-namespace:ex1_JennyAndYael.View.Controls"
+        xmlns:Ma ="clr-namespace:ex1_JennyAndYael.View.Controls"
+        xmlns:Board ="clr-namespace:ex1_JennyAndYael.View.Controls"
+
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="900">
     <Grid>
@@ -18,11 +21,12 @@
         </Grid.RowDefinitions>
 
         <Viewbox Grid.Column="0" Grid.RowSpan="2">
-            <Button  RenderTransformOrigin="10.764,-3.995" >Map</Button>
+            <Ma:Map Height="420" Width="309"/>
         </Viewbox>
 
         <Viewbox Grid.Column="1">
-            <Button  RenderTransformOrigin="10.764,-3.995" >Board</Button>
+            <!--<DataGrid:DataTable Loaded= "Window_Loaded" Grid.Column="1" Margin="102.2,45,101.2,163.6"/>-->
+            <Board:DataTable Margin="62.2,43,82.2,26.6" Height="704" Width="689" RenderTransformOrigin="0.5,0.618"/>
         </Viewbox>
 
         <Joy:Joystick Grid.Row="1" Loaded="Joystick_Loaded" Margin="585,10.4,10.2,-5.2" Grid.ColumnSpan="2"/>
