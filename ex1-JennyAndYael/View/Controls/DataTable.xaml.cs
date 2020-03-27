@@ -50,7 +50,7 @@ namespace ex1_JennyAndYael.View.Controls
             //fourth row - airspeed-indicator_indicated-speed-kt
             DataRow fourthRow = dt.NewRow();
             fourthRow[0] = "airspeed";
-            fourthRow[1] = 0.0;
+            fourthRow[1] = 1.58048948;
             //fifth row - gps_indicated-altitude-ft
             DataRow fifthRow = dt.NewRow();
             fifthRow[0] = "gps-altitude";
@@ -65,7 +65,7 @@ namespace ex1_JennyAndYael.View.Controls
             seventhRow[1] = 0.0;
             //eighth row - altimeter_indicated-altitude-ft
             DataRow eighthRow = dt.NewRow();
-            eighthRow[0] = "altimeter-altitude";
+            eighthRow[0] = "altimeter-altitude ";
             eighthRow[1] = 0.0;
             //adding rows to the table
             dt.Rows.Add(firstRow);
@@ -78,6 +78,9 @@ namespace ex1_JennyAndYael.View.Controls
             dt.Rows.Add(eighthRow);
 
             simulatorData.ItemsSource = dt.DefaultView;
+            simulatorData.ColumnWidth = 150;
+            simulatorData.RowHeight = 70;
+            simulatorData.FontSize = 35;
         }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
