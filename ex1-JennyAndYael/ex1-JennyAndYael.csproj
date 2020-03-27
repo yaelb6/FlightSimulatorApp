@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="INotifyPropertyChanged.cs" />
     <Compile Include="View\Controls\DataTable.xaml.cs">
       <DependentUpon>DataTable.xaml</DependentUpon>
     </Compile>
