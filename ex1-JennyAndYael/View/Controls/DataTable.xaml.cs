@@ -25,7 +25,7 @@ namespace ex1_JennyAndYael.View.Controls
         {
             InitializeComponent();
         }
-        void fillingData()
+        public void fillingData()
         {
             System.Data.DataTable dt = new System.Data.DataTable();
             //configuring the headers data columns
@@ -80,7 +80,7 @@ namespace ex1_JennyAndYael.View.Controls
             simulatorData.ItemsSource = dt.DefaultView;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.fillingData();
         }
