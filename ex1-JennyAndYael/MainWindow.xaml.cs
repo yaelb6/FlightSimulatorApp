@@ -8,9 +8,15 @@ namespace ex1_JennyAndYael
     /// </summary>
     public partial class MainWindow : Window
     {
+        MyClient client = new MyClient();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            //try the server
+            client.set("set /controls/engines/current-engine/throttle 0.5\n");
+            client.get("get /controls/engines/current-engine/throttle\n");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
