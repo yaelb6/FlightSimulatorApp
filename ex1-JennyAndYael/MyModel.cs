@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ex1_JennyAndYael
 {
@@ -14,6 +15,16 @@ namespace ex1_JennyAndYael
 
         MyClient telnetClient;
         volatile Boolean stop;
+
+        public double indicated_heading_deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double gps_indicated_vertical_speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double gps_indicated_ground_speed_kt { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double airspeed_indicator_indicated_speed_kt { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double gps_indicated_altitude_ft { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double attitude_indicator_internal_roll_deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double attitude_indicator_internal_pitch_deg { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public double altimeter_indicated_altitude_ft { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public MyModel(MyClient telnetClient)
         {
             this.telnetClient = telnetClient;

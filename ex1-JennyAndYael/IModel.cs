@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ex1_JennyAndYael
 {
@@ -22,8 +23,5 @@ namespace ex1_JennyAndYael
         double attitude_indicator_internal_roll_deg { set; get; }
         double attitude_indicator_internal_pitch_deg { set; get; }
         double altimeter_indicated_altitude_ft { set; get; }
-
-
-
     }
 }
