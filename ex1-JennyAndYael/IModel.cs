@@ -24,12 +24,6 @@ namespace ex1_JennyAndYael
         double Attitude_indicator_internal_pitch_deg { set; get; }
         double Altimeter_indicated_altitude_ft { set; get; }
 
-        // joystick properties
-        double Rudder { set; get; }
-        double Throttle { set; get; }
-        double Aileron { set; get; }
-        double Elevator { set; get; }
-
         //map properties
         double Latitude_deg { set; get; }
         double Longitude_deg { set; get; }
