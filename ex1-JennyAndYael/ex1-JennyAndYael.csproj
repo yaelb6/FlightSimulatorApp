@@ -61,6 +61,7 @@
     </ApplicationDefinition>
     <Compile Include="BoardViewModel.cs" />
     <Compile Include="IModel.cs" />
+    <Compile Include="JoyStickViewModel.cs" />
     <Compile Include="MapViewModel.cs" />
     <Compile Include="MyClient.cs" />
     <Compile Include="MyModel.cs" />

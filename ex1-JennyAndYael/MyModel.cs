@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.ComponentModel;
 
 namespace ex1_JennyAndYael
 {
@@ -207,7 +206,7 @@ namespace ex1_JennyAndYael
             set
             {
                 latitude = value;
-                NotifyPropertyChanged("Latitude_deg");
+                NotifyPropertyChanged("Longitude_deg");
             }
         }
 
