@@ -23,7 +23,7 @@ namespace ex1_JennyAndYael
             
 
         }
-        public void connect(string ip, int port)
+        public void connect()
         {
             tcpClient = new TcpClient(connectionIp, connectionPort);
         }

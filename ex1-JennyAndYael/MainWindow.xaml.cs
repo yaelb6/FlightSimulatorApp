@@ -12,11 +12,15 @@ namespace ex1_JennyAndYael
 
         public MainWindow()
         {
+           
+            //try the server
+            //client.set("set /controls/engines/current-engine/throttle 0.5\n");
+            //client.get("get /controls/engines/current-engine/throttle\n");
+            MyModel model = new MyModel(client);
+            model.start();
+
             InitializeComponent();
 
-            //try the server
-            client.set("set /controls/engines/current-engine/throttle 0.5\n");
-            client.get("get /controls/engines/current-engine/throttle\n");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
