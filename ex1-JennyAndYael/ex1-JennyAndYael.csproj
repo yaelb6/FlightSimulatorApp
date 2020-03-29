@@ -60,7 +60,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IModel.cs" />
-    <Compile Include="INotifyPropertyChanged.cs" />
     <Compile Include="MyClient.cs" />
     <Compile Include="MyModel.cs" />
     <Compile Include="View\Controls\DataTable.xaml.cs">
