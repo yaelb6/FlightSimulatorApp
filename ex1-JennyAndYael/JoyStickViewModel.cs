@@ -10,8 +10,6 @@ namespace ex1_JennyAndYael
     class JoyStickViewModel : INotifyPropertyChanged
     {
         private MyModel simulatorModel;
-        private double rudder;
-        private double elevator;
         private double throttle;
         private double aileron;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -19,27 +17,9 @@ namespace ex1_JennyAndYael
         {
             this.simulatorModel = model;
         }
-        public double VM_Rudder
+        public void joyStickMoved(double rudder, double elevator)
         {
-            get
-            {
-                return this.rudder;
-            }
-            set
-            {
-                rudder = value;
-            }
-        }
-        public double VM_Elevator
-        {
-            get
-            {
-                return this.elevator;
-            }
-            set
-            {
-                elevator = value;
-            }
+            simulatorModel.updateRudderAndElevator(rudder, elevator);
         }
         public double VM_Throttle
         {
@@ -50,6 +30,7 @@ namespace ex1_JennyAndYael
             set
             {
                 throttle = value;
+                simulatorModel.updateThrottle(throttle);
             }
         }
         public double VM_Aileron
@@ -61,6 +42,7 @@ namespace ex1_JennyAndYael
             set
             {
                 aileron = value;
+                simulatorModel.updateAileron(aileron);
             }
         }
     }

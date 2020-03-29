@@ -35,6 +35,19 @@ namespace ex1_JennyAndYael
         private double latitude;
         private double longitude_deg;
 
+        public void updateRudderAndElevator (double rudder, double elevator)
+        {
+            this.rudder = rudder;
+            this.elevator = elevator;
+        }
+        public void updateAileron (double aileron)
+        {
+            this.aileron = aileron;
+        }
+        public void updateThrottle (double throttle)
+        {
+            this.throttle = throttle;
+        }
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -135,54 +148,6 @@ namespace ex1_JennyAndYael
             {
                 altimeter_indicated_altitude_ft = value;
                 NotifyPropertyChanged("Altimeter_indicated_altitude_ft");
-            }
-        }
-        public double Rudder
-        {
-            get
-            {
-                return rudder;
-            }
-            set
-            {
-                rudder = value;
-                NotifyPropertyChanged("Rudder");
-            }
-        }
-        public double Throttle
-        {
-            get
-            {
-                return throttle;
-            }
-            set
-            {
-                throttle = value;
-                NotifyPropertyChanged("Throttle");
-            }
-        }
-        public double Aileron
-        {
-            get
-            {
-                return aileron;
-            }
-            set
-            {
-                aileron = value;
-                NotifyPropertyChanged("Aileron");
-            }
-        }
-        public double Elevator
-        {
-            get
-            {
-                return elevator;
-            }
-            set
-            {
-                elevator = value;
-                NotifyPropertyChanged("Elevator");
             }
         }
         public double Latitude_deg
@@ -315,13 +280,13 @@ namespace ex1_JennyAndYael
                     }
 
                     //set 4 properties from joystick
-                    message = "set /controls/flight/rudder" + Rudder + "\n";
+                    message = "set /controls/flight/rudder" + this.rudder + "\n";
                     telnetClient.set(message);
-                    message = "set /controls/flight/elevator" + Throttle + "\n";
+                    message = "set /controls/flight/elevator" + this.throttle + "\n";
                     telnetClient.set(message);
-                    message = "set /controls/flight/aileron" + Aileron + "\n";
+                    message = "set /controls/flight/aileron" + this.aileron + "\n";
                     telnetClient.set(message);
-                    message = "set /controls/engines/engine/throttle" + Elevator + "\n";
+                    message = "set /controls/engines/engine/throttle" + this.elevator + "\n";
                     telnetClient.set(message);
 
                     //get 2 properties for map
