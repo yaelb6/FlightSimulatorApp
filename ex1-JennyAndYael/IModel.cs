@@ -34,6 +34,5 @@ namespace ex1_JennyAndYael
         double Latitude_deg { set; get; }
         double Longitude_deg { set; get; }
 
-
     }
 }
