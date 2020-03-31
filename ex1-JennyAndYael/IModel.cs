@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace ex1_JennyAndYael
 {
-    interface IModel : INotifyPropertyChanged
+    public interface IModel : INotifyPropertyChanged
     {
         // connection to the server
         void connect();

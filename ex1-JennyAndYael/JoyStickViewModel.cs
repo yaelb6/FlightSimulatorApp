@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace ex1_JennyAndYael
 {
-    class JoyStickViewModel : INotifyPropertyChanged
+    public class JoyStickViewModel : INotifyPropertyChanged
     {
         private MyModel simulatorModel;
         private double throttle;
