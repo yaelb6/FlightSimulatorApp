@@ -21,10 +21,9 @@ namespace ex1_JennyAndYael.View.Controls
     /// </summary>
     public partial class Map : UserControl
     {
-        public Map(MapViewModel mapViewModel)
+        public Map()
         {
             InitializeComponent();
-            DataContext = mapViewModel;
         }
     }
 }

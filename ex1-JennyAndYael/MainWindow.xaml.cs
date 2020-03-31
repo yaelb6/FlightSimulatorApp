@@ -12,14 +12,15 @@ namespace ex1_JennyAndYael
 
         public MainWindow()
         {
-           
             //try the server
-            
+
             //MyModel model = new MyModel(client);
             //model.start();
+            //MapViewModel mapViewModel = new MapViewModel(model);
+            //BoardViewModel boardViewModel = new BoardViewModel(model);
+            //JoyStickViewModel joyStickViewModel = new JoyStickViewModel(model);
 
             InitializeComponent();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
