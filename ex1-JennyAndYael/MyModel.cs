@@ -307,7 +307,7 @@ namespace ex1_JennyAndYael
                     }
                     else
                     {
-                        Latitude_deg = Double.Parse(telnetClient.get(message));
+                        Longitude_deg = Double.Parse(telnetClient.get(message));
                     }
 
                     Console.WriteLine(indicated_heading_deg);

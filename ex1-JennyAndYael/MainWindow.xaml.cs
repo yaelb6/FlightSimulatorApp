@@ -9,14 +9,16 @@ namespace ex1_JennyAndYael
     public partial class MainWindow : Window
     {
         MyClient client = new MyClient();
+        MapViewModel mapVm;
+
         public MainWindow()
         {
 
             //try the server
             MyModel model = new MyModel(client);
-            MapViewModel mapViewModel = new MapViewModel(model);
+            mapVm = new MapViewModel(model);
+            //map.DataContext = mapViewModel;
             model.start();
-            map.DataContext = mapViewModel;
             InitializeComponent();
         }
 
