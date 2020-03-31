@@ -18,7 +18,6 @@ namespace ex1_JennyAndYael
             model.start();
             map.DataContext = mapViewModel;
             InitializeComponent();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

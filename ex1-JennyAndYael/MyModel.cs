@@ -82,11 +82,11 @@ namespace ex1_JennyAndYael
         {
             get
             {
-                return gps_indicated_vertical_speed;
+                return gps_indicated_ground_speed_kt;
             }
             set
             {
-                gps_indicated_vertical_speed = value;
+                gps_indicated_ground_speed_kt = value;
                 NotifyPropertyChanged("Gps_indicated_vertical_speed");
             }
         }
