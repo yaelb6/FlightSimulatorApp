@@ -68,6 +68,9 @@
     <Compile Include="View\Controls\DataTable.xaml.cs">
       <DependentUpon>DataTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\JoyAndSlider.xaml.cs">
+      <DependentUpon>JoyAndSlider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>
@@ -90,9 +93,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Controls\Joystick.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="View\Controls\JoyAndSlider.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\Joystick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Controls\Map.xaml">
       <SubType>Designer</SubType>

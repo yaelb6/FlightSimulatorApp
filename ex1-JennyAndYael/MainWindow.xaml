@@ -12,23 +12,24 @@
         Title="MainWindow" Height="650" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="528*"/>
+            <ColumnDefinition Width="367*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Viewbox Grid.Column="0" Grid.RowSpan="2">
-            <Ma:Map Height="420" Width="309"/>
+        <Viewbox Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,-0.2">
+            <Ma:Map Height="235"  />
         </Viewbox>
 
-        <Viewbox Grid.Column="1">
+        <Viewbox Grid.Column="1"  >
             <Board:DataTable Margin="62.2,43,82.2,26.6" Height="704" Width="689" RenderTransformOrigin="0.5,0.618"/>
         </Viewbox>
 
-        <Joy:Joystick Grid.Row="1" Loaded="Joystick_Loaded" Margin="585,10.4,10.2,-5.2" Grid.ColumnSpan="2"/>
+        <Joy:JoyAndSlider Grid.Row="1"  Grid.Column="1" Margin="0,8.4,0.2,8.8" />
+
 
     </Grid>
 </Window>
