@@ -10,6 +10,7 @@ namespace ex1_JennyAndYael
     {
         MyClient client = new MyClient();
         MapViewModel mapVm;
+        BoardViewModel boardVm;
 
         public MainWindow()
         {
@@ -17,10 +18,13 @@ namespace ex1_JennyAndYael
             //try the server
             MyModel model = new MyModel(client);
             mapVm = new MapViewModel(model);
-            //map.DataContext = mapViewModel;
+            boardVm = new BoardViewModel(model);
             model.start();
             InitializeComponent();
+            map.DataContext = mapVm;
+            board.DataContext = boardVm;
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -37,9 +41,10 @@ namespace ex1_JennyAndYael
             
         }
 
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

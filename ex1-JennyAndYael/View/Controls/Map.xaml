@@ -7,11 +7,12 @@
              xmlns:local="clr-namespace:ex1_JennyAndYael.View.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             DataContext= "{Binding mapVm}">
+>
     <Grid>
         <m:Map Name ="map" CredentialsProvider="Ar_XuklKC6aVPVhtkZMCTx45g6bkRcOd82Upd-fuQVh2jDlISDkw0FSzYcs7UTSA"
-               Center="32.002644, 34.888781" ZoomLevel="8">
-            <m:Pushpin Name="pushPin" Background="Violet" Location="{Binding VM_Location}"/>
+               Center="32.002644, 34.888781" ZoomLevel="12">
+            <m:Pushpin Name="pushPin" Background="Violet" Location="{Binding Path=VM_Location}"/>
+
         </m:Map>
     </Grid>
 </UserControl>
