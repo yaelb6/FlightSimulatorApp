@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Maps.MapControl.WPF;
 
 namespace ex1_JennyAndYael.View.Controls
 {
@@ -20,9 +21,10 @@ namespace ex1_JennyAndYael.View.Controls
     /// </summary>
     public partial class Map : UserControl
     {
-        public Map()
+        public Map(MapViewModel mapViewModel)
         {
             InitializeComponent();
+            DataContext = mapViewModel;
         }
     }
 }

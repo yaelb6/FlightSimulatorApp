@@ -9,8 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <m:Map CredentialsProvider="Ar_XuklKC6aVPVhtkZMCTx45g6bkRcOd82Upd-fuQVh2jDlISDkw0FSzYcs7UTSA"
-               Center="47.620574,-122.34942" ZoomLevel="12">
-            <m:Pushpin Location="47.620574,-122.34942" Background="Violet"/>
+               Center="32.002644, 34.888781" ZoomLevel="12">
+            <m:Pushpin Name="pushPin" Background="Violet" Location="{Binding VM_Location}"/>
         </m:Map>
     </Grid>
 </UserControl>

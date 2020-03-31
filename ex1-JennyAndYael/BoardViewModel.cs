@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace ex1_JennyAndYael
 {
-    class BoardViewModel : INotifyPropertyChanged
+    public class BoardViewModel : INotifyPropertyChanged
     {
         private MyModel simulatorModel;
         public event PropertyChangedEventHandler PropertyChanged;

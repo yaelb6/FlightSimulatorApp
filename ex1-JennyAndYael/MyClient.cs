@@ -8,7 +8,7 @@ using System.Configuration;
 
 namespace ex1_JennyAndYael
 {
-    class MyClient
+    public class MyClient
     {
         TcpClient tcpClient;
         NetworkStream stream;

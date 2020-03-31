@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ex1_JennyAndYael
 {
-    class MyModel : IModel
+    public class MyModel : IModel
     {
         //INotifyPropertyChanged implementation:
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,7 +33,7 @@ namespace ex1_JennyAndYael
 
         //2 fields for map
         private double latitude;
-        private double longitude_deg;
+        private double longitude;
 
         public void updateRudderAndElevator (double rudder, double elevator)
         {
@@ -166,11 +166,11 @@ namespace ex1_JennyAndYael
         {
             get
             {
-                return longitude_deg;
+                return longitude;
             }
             set
             {
-                latitude = value;
+                longitude = value;
                 NotifyPropertyChanged("Longitude_deg");
             }
         }
@@ -316,8 +316,8 @@ namespace ex1_JennyAndYael
                     Console.WriteLine(airspeed_indicator_indicated_speed_kt);
                     Console.WriteLine(gps_indicated_altitude_ft);
                     Console.WriteLine(attitude_indicator_internal_roll_deg);
+                    Console.WriteLine(attitude_indicator_internal_pitch_deg);
                     Console.WriteLine(altimeter_indicated_altitude_ft);
-                    Console.WriteLine(Indicated_heading_deg);
 
                     Console.WriteLine(rudder);
                     Console.WriteLine(throttle);
@@ -325,7 +325,7 @@ namespace ex1_JennyAndYael
                     Console.WriteLine(elevator);
 
                     Console.WriteLine(Latitude_deg);
-                    Console.WriteLine(longitude_deg);
+                    Console.WriteLine(Longitude_deg);
 
                     // the same for the other sensors properties
                     Thread.Sleep(250);// read the data in 4Hz
