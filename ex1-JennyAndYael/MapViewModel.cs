@@ -25,7 +25,6 @@ namespace ex1_JennyAndYael
         public void NotifyPropertyChanged(string propName) {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VM_Location"));
             VM_Location = new Location(VM_Latitude_deg, VM_Longitude_deg);
-            
         }
         public double VM_Latitude_deg
         {
