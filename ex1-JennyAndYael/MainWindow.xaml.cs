@@ -40,5 +40,9 @@ namespace ex1_JennyAndYael
         {
             
         }
+        private void map_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
