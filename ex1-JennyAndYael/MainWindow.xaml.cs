@@ -11,6 +11,7 @@ namespace ex1_JennyAndYael
         MyClient client = new MyClient();
         MapViewModel mapVm;
         BoardViewModel boardVm;
+        JoyStickViewModel joyVM;
 
         public MainWindow()
         {
@@ -23,6 +24,7 @@ namespace ex1_JennyAndYael
             InitializeComponent();
             map.DataContext = mapVm;
             board.DataContext = boardVm;
+            joystick.DataContext = joyVM;
         }
 
 
