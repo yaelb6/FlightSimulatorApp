@@ -23,9 +23,6 @@ namespace ex1_JennyAndYael
         {
             //paul's example, if it doesn't work try like eli's example
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-            Console.WriteLine("Board: " + propName);
-            Console.WriteLine(VM_Indicated_heading_deg);
-            Console.WriteLine(VM_Airspeed_indicator_indicated_speed_kt);
         }
         public double VM_Indicated_heading_deg { 
             get

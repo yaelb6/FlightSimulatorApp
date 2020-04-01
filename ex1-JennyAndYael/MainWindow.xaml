@@ -24,7 +24,7 @@
             <Board:DataTable x:Name="board" Height="365" Width="434" />
         </Viewbox>
 
-        <Joy:JoyAndSlider x:Name="joystick" Grid.Row="1"  Grid.Column="1" Margin="0,8.4,0.2,8.8" />
+        <Joy:JoyAndSlider x:Name="joystickSlider" Grid.Row="1"  Grid.Column="1" Margin="0,8.4,0.2,8.8" />
 
 
     </Grid>
