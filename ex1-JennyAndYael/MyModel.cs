@@ -158,8 +158,11 @@ namespace ex1_JennyAndYael
             }
             set
             {
-                latitude = value;
-                NotifyPropertyChanged("Latitude_deg");
+                if (value < 90 && value > -90)
+                {
+                    latitude = value;
+                    NotifyPropertyChanged("Latitude_deg");
+                }
             }
         }
         public double Longitude_deg
@@ -170,8 +173,11 @@ namespace ex1_JennyAndYael
             }
             set
             {
-                longitude = value;
-                NotifyPropertyChanged("Longitude_deg");
+                if (value < 180 && value > -180)
+                {
+                    longitude = value;
+                    NotifyPropertyChanged("Longitude_deg");
+                }
             }
         }
 
