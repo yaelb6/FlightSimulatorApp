@@ -87,7 +87,7 @@ namespace ex1_JennyAndYael
             set
             {
                 gps_indicated_ground_speed_kt = value;
-                NotifyPropertyChanged("Gps_indicated_vertical_speed");
+                NotifyPropertyChanged("Gps_indicated_ground_speed_kt");
             }
         }
         public double Airspeed_indicator_indicated_speed_kt

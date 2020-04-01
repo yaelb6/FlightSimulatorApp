@@ -19,13 +19,10 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Ma:Map x:Name="map" Grid.Column="0" Grid.RowSpan="2" Margin="10,64,10.333,25.333" Loaded="map_Loaded"/>
 
-        <!--<Viewbox Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,-0.2">-->
-        <Ma:Map x:Name="map" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,-0.2" Height="400" Width="320"/>
-        <!--</Viewbox>-->
-
-        <Viewbox Grid.Column="1"  >
-            <Board:DataTable x:Name="board" Margin="62.2,43,82.2,26.6" Height="704" Width="689" RenderTransformOrigin="0.5,0.618"/>
+        <Viewbox Grid.Column="1">
+            <Board:DataTable x:Name="board" Height="365" Width="434" />
         </Viewbox>
 
         <Joy:JoyAndSlider Grid.Row="1"  Grid.Column="1" Margin="0,8.4,0.2,8.8" />
