@@ -280,14 +280,29 @@ namespace ex1_JennyAndYael
                     }
 
                     //set 4 properties from joystick
-                    message = "set /controls/flight/rudder" + this.rudder + "\n";
+                    message = "set /controls/flight/rudder " + this.rudder + "\n";
                     telnetClient.set(message);
-                    message = "set /controls/flight/elevator" + this.throttle + "\n";
+                    Console.WriteLine("elevator:" + elevator);
+                    message = "get /controls/flight/rudder \n";
+                    Console.WriteLine(telnetClient.get(message));
+
+                    message = "set /controls/flight/throttle " + this.throttle + "\n";
                     telnetClient.set(message);
-                    message = "set /controls/flight/aileron" + this.aileron + "\n";
+                    //Console.WriteLine("Throttle:" + throttle);
+                    //message = "get /controls/flight/throttle \n";
+                    //Console.WriteLine(telnetClient.get(message));
+                    
+                    message = "set /controls/flight/aileron " + this.aileron + "\n";
                     telnetClient.set(message);
-                    message = "set /controls/engines/engine/throttle" + this.elevator + "\n";
+                    //Console.WriteLine("Aileron:" + aileron);
+                    //message = "get /controls/flight/aileron \n";
+                    //Console.WriteLine(telnetClient.get(message));
+
+                    message = "set /controls/flight/elevator " + this.elevator + "\n";
                     telnetClient.set(message);
+                    Console.WriteLine("elevator:" + elevator);
+                    message = "get /controls/flight/elevator \n";
+                    Console.WriteLine(telnetClient.get(message));
 
                     //get 2 properties for map
                     message = "get /position/latitude-deg\n";
@@ -310,22 +325,6 @@ namespace ex1_JennyAndYael
                         Longitude_deg = Double.Parse(telnetClient.get(message));
                     }
 
-                    Console.WriteLine(indicated_heading_deg);
-                    Console.WriteLine(gps_indicated_vertical_speed);
-                    Console.WriteLine(gps_indicated_ground_speed_kt);
-                    Console.WriteLine(airspeed_indicator_indicated_speed_kt);
-                    Console.WriteLine(gps_indicated_altitude_ft);
-                    Console.WriteLine(attitude_indicator_internal_roll_deg);
-                    Console.WriteLine(attitude_indicator_internal_pitch_deg);
-                    Console.WriteLine(altimeter_indicated_altitude_ft);
-
-                    Console.WriteLine(rudder);
-                    Console.WriteLine(throttle);
-                    Console.WriteLine(aileron);
-                    Console.WriteLine(elevator);
-
-                    Console.WriteLine(Latitude_deg);
-                    Console.WriteLine(Longitude_deg);
 
                     // the same for the other sensors properties
                     Thread.Sleep(250);// read the data in 4Hz

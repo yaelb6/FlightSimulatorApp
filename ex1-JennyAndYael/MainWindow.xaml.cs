@@ -20,11 +20,13 @@ namespace ex1_JennyAndYael
             MyModel model = new MyModel(client);
             mapVm = new MapViewModel(model);
             boardVm = new BoardViewModel(model);
+            joyVM = new JoyStickViewModel(model);
             model.start();
             InitializeComponent();
             map.DataContext = mapVm;
             board.DataContext = boardVm;
-            joystick.DataContext = joyVM;
+            joystickSlider.DataContext = joyVM;
+            joystickSlider.setVmJoyS(joyVM);
         }
 
 

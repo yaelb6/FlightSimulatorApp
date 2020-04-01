@@ -22,11 +22,17 @@ namespace ex1_JennyAndYael.View.Controls
         {
             //bool mousePressed;
             private Point point = new Point();
+        private JoyStickViewModel joyVM;
 
             public Joystick()
             {
                 InitializeComponent();
             }
+
+        public void setVm(JoyStickViewModel joyvm)
+        {
+            joyVM = joyvm;
+        }
             void centerKnob_Completed(object sender, EventArgs e) { }
 
             private void Knob_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -49,12 +55,19 @@ namespace ex1_JennyAndYael.View.Controls
                 {
                     double x = e.GetPosition(this).X - point.X;
                     double y = e.GetPosition(this).Y - point.Y;
-                    if (Math.Sqrt(x * x + y * y) < Base.Width / 2)
+                    if ((Math.Sqrt(x * x + y * y) < Base.Width / 2) && (Math.Sqrt(x * x + y * y)<140))
                     {
-                        knobPosition.X = x;
-                        knobPosition.Y = y;
-                    }
+                   
+                    knobPosition.X = x;
+                    knobPosition.Y = y;
+                    joyVM.joyStickMoved(x, y);
 
+                    }
+                else
+                {
+                    knobPosition.X = 0;
+                    knobPosition.Y = 0;
+                }
                 }
             }
 
@@ -83,5 +96,10 @@ namespace ex1_JennyAndYael.View.Controls
             {
 
             }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
+    }
     }

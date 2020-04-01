@@ -24,5 +24,14 @@ namespace ex1_JennyAndYael.View.Controls
         {
             InitializeComponent();
         }
+        public void setVmJoyS(JoyStickViewModel joyvm)
+        {
+            JoyStickElement.setVm(joyvm);
+        }
+
+        private void T_Copy2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
 }

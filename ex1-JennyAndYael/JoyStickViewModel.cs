@@ -19,7 +19,13 @@ namespace ex1_JennyAndYael
         }
         public void joyStickMoved(double rudder, double elevator)
         {
-            simulatorModel.updateRudderAndElevator(rudder, elevator);
+            double x, y;
+            //Normalize 
+            x = 2 * ((rudder - (-140.1)) / (140.1 - (-140.1))) - 1;
+            y = 2 * ((elevator - (-140.1)) / (140.1 - (-140.1))) - 1;
+            //simulatorModel.updateRudderAndElevator(rudder, elevator);
+            simulatorModel.updateRudderAndElevator(x, y);
+            Console.WriteLine("Moved! x=" + x + "y="+ y);
         }
         public double VM_Throttle
         {
@@ -31,6 +37,8 @@ namespace ex1_JennyAndYael
             {
                 throttle = value;
                 simulatorModel.updateThrottle(throttle);
+                Console.WriteLine("Throttle is updated!");
+                
             }
         }
         public double VM_Aileron
@@ -43,6 +51,7 @@ namespace ex1_JennyAndYael
             {
                 aileron = value;
                 simulatorModel.updateAileron(aileron);
+                Console.WriteLine("aileron is updated!");
             }
         }
     }

@@ -23,25 +23,27 @@
         </Grid.RowDefinitions>
 
         <Viewbox  Grid.Row="1"  Grid.Column="1" Margin="4,2,2.2,1.8">
-            <JoyS:Joystick />
+            <JoyS:Joystick x:Name="JoyStickElement"/>
         </Viewbox>
 
         <Grid Margin="99,18.2,41.2,0" Grid.Row="2" Height="25" VerticalAlignment="Top" Grid.Column="1">
             <Slider x:Name="T_Copy1" 
                 Minimum="0" 
-                Maximum="10"
+                Maximum="1"
                 TickFrequency="5"
-                Orientation="Horizontal" RenderTransformOrigin="0.521,0.771" Margin="-34,-18,-20,16" Height="27" VerticalAlignment="Bottom"/>
+                Orientation="Horizontal" RenderTransformOrigin="0.521,0.771" Margin="-34,-18,-20,16"
+                    Value="{Binding VM_Throttle}"/>
             <Label Content="Throttle" HorizontalAlignment="Left" Margin="-41,0,0,0" VerticalAlignment="Top" Width="56" Height="25"/>
             <Label x:Name="displayLabel1" Content="{Binding Source={x:Reference T_Copy1},Path=Value}" Height="26" Margin="33,0,-29,-1" />
         </Grid>
 
         <Grid Grid.Row="0" Height="34" VerticalAlignment="Top" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,7.2,0" Grid.RowSpan="2">
             <Slider x:Name="T_Copy2" 
-                Minimum="0" 
-                Maximum="10"
+                Minimum="-1" 
+                Maximum="1"
                 TickFrequency="5"
-                Orientation="Horizontal" RenderTransformOrigin="0.521,0.771" Margin="-21,93,0,-84" HorizontalAlignment="Left" Width="192">
+                Orientation="Horizontal" RenderTransformOrigin="0.521,0.771" Margin="-21,93,0,-84" HorizontalAlignment="Left" Width="192"
+                    Value="{Binding VM_Aileron}" ValueChanged="T_Copy2_ValueChanged">
                 <Slider.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
