@@ -40,11 +40,5 @@ namespace ex1_JennyAndYael
         {
             
         }
-
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

@@ -5,8 +5,102 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ex1_JennyAndYael.View.Controls"
              mc:Ignorable="d" Height="256" Width="684.8" >
-    <Grid>
-        <!--<DataGrid x:Name="simulatorData" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="500" Loaded="Window_Loaded"/>-->
-        <DataGrid x:Name="simulatorData" Loaded="Window_Loaded"/>
-    </Grid>
+    <FlowDocument>
+    <Table x:Name="simulatorData">
+        <Table.Columns>
+            <TableColumn/>
+            <TableColumn/>
+        </Table.Columns>
+        <TableRowGroup>
+            <TableRow Background="LightGoldenrodYellow">
+                <TableCell>
+                    <Paragraph FontSize="14pt" FontWeight="Bold">Name</Paragraph>
+                </TableCell>
+                <TableCell>
+                <Paragraph FontSize="14pt" FontWeight="Bold">Value</Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>
+                    <Paragraph>heading</Paragraph>
+                </TableCell>
+                <TableCell>
+                    <Paragraph>
+                       <TextBlock Width="100" Text="{Binding VM_Indicated_heading_deg}"/>
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>
+                    <Paragraph>vertical-speed</Paragraph>
+                </TableCell>
+                <TableCell>
+                    <Paragraph>
+                        <TextBlock Width="100" Text="{Binding VM_Gps_indicated_vertical_speed}"/>
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph>ground-speed</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph>
+                            <TextBlock Width="100" Text="{Binding VM_Gps_indicated_ground_speed_kt}"/>
+                        </Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph>airspeed</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph>
+                            <TextBlock Width="100" Text="{Binding VM_Airspeed_indicator_indicated_speed_kt}"/>
+                        </Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph>gps-altitude</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph>
+                            <TextBlock Width="100" Text="{Binding VM_Gps_indicated_altitude_ft}"/>
+                        </Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph>attitude-roll</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph>
+                            <TextBlock Width="100" Text="{Binding VM_Attitude_indicator_internal_roll_deg}"/>
+                        </Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph>attitude-pitch</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph>
+                            <TextBlock Width="100" Text="{Binding VM_Attitude_indicator_internal_pitch_deg}"/>
+                        </Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph>altimeter-altitude</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph>
+                            <TextBlock Width="100" Text="{Binding VM_Altimeter_indicated_altitude_ft}"/>
+                        </Paragraph>
+                    </TableCell>
+                </TableRow>
+            </TableRowGroup>
+    </Table>
+    </FlowDocument>
 </UserControl>
