@@ -9,21 +9,21 @@ namespace ex1_JennyAndYael
     public partial class MainWindow : Window
     {
         MyClient client = new MyClient();
-        MapViewModel mapVm;
+        MapViewModel mapVM;
         BoardViewModel boardVm;
         JoyStickViewModel joyVM;
 
         public MainWindow()
         {
-
             //try the server
             MyModel model = new MyModel(client);
-            mapVm = new MapViewModel(model);
+            mapVM = new MapViewModel(model);
             boardVm = new BoardViewModel(model);
             joyVM = new JoyStickViewModel(model);
             model.start();
             InitializeComponent();
-            map.DataContext = mapVm;
+            this.DataContext = mapVM;
+            map.DataContext = mapVM;
             board.DataContext = boardVm;
             joystickSlider.DataContext = joyVM;
             joystickSlider.setVmJoyS(joyVM);
