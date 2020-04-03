@@ -6,40 +6,46 @@
              xmlns:local="clr-namespace:ex1_JennyAndYael.View.Controls"
              mc:Ignorable="d" Height="256" Width="684.8" >
     <FlowDocument>
-    <Table x:Name="simulatorData">
-        <Table.Columns>
-            <TableColumn/>
-            <TableColumn/>
-        </Table.Columns>
-        <TableRowGroup>
-            <TableRow Background="LightGoldenrodYellow">
-                <TableCell>
-                    <Paragraph FontSize="14pt" FontWeight="Bold">Name</Paragraph>
-                </TableCell>
-                <TableCell>
-                <Paragraph FontSize="14pt" FontWeight="Bold">Value</Paragraph>
-                </TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell>
-                    <Paragraph>heading</Paragraph>
-                </TableCell>
-                <TableCell>
-                    <Paragraph>
-                       <TextBlock Width="150" Text="{Binding VM_Indicated_heading_deg}"/>
-                    </Paragraph>
-                </TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell>
-                    <Paragraph>vertical-speed</Paragraph>
-                </TableCell>
-                <TableCell>
-                    <Paragraph>
-                        <TextBlock Width="150" Text="{Binding VM_Gps_indicated_vertical_speed}"/>
-                    </Paragraph>
-                </TableCell>
-            </TableRow>
+        <Paragraph LineHeight="5">
+            <TextBlock Foreground="Red" Text="{Binding VM_Error_map, Mode=OneWay}">
+            </TextBlock>
+            <TextBlock Foreground="Red" Text="{Binding VM_Slow_server, Mode=OneWay}">
+            </TextBlock>
+        </Paragraph>
+        <Table x:Name="simulatorData">
+            <Table.Columns>
+                <TableColumn/>
+                <TableColumn/>
+            </Table.Columns>
+            <TableRowGroup>
+                <TableRow Background="LightGoldenrodYellow">
+                    <TableCell>
+                        <Paragraph FontSize="14pt" FontWeight="Bold">Name</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph FontSize="14pt" FontWeight="Bold">Value</Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph>heading</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph>
+                            <TextBlock MaxWidth="100" Text="{Binding VM_Indicated_heading_deg}"/>
+                        </Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph>vertical-speed</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph>
+                            <TextBlock Width="150" Text="{Binding VM_Gps_indicated_vertical_speed}"/>
+                        </Paragraph>
+                    </TableCell>
+                </TableRow>
                 <TableRow>
                     <TableCell>
                         <Paragraph>ground-speed</Paragraph>
@@ -101,6 +107,6 @@
                     </TableCell>
                 </TableRow>
             </TableRowGroup>
-    </Table>
+        </Table>
     </FlowDocument>
 </UserControl>

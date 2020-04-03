@@ -26,6 +26,7 @@ namespace ex1_JennyAndYael
         public void connect()
         {
             tcpClient = new TcpClient(connectionIp, connectionPort);
+            tcpClient.ReceiveTimeout = 10000;
         }
 
         public void set(string message)
@@ -34,13 +35,12 @@ namespace ex1_JennyAndYael
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
             // Get a client stream for reading and writing.
             stream = tcpClient.GetStream();
-            // Send the message to the connected TcpServer. 
+            // Send the message to the connected TcpServer.
             stream.Write(data, 0, data.Length);
             String responseData = String.Empty;
             // Read the first batch of the TcpServer response bytes.
             Int32 bytes = stream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-
         }
 
         public string get(string message)
