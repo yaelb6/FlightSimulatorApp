@@ -59,8 +59,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ApplicationSettingsModel.cs" />
     <Compile Include="BoardViewModel.cs" />
     <Compile Include="IModel.cs" />
+    <Compile Include="ISettingsModel.cs" />
+    <Compile Include="SettingsViewModel.cs" />
+    <Compile Include="SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="JoyStickViewModel.cs" />
     <Compile Include="MapViewModel.cs" />
     <Compile Include="MyClient.cs" />
@@ -77,6 +83,10 @@
     <Compile Include="View\Controls\Map.xaml.cs">
       <DependentUpon>Map.xaml</DependentUpon>
     </Compile>
+    <Page Include="SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

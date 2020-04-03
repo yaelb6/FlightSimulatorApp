@@ -1,5 +1,6 @@
-﻿using System.Windows;
-
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace ex1_JennyAndYael
 {
@@ -48,5 +49,14 @@ namespace ex1_JennyAndYael
         {
 
         }
+
+        private void ButtonClicked(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow subWindow = new SettingsWindow();
+            subWindow.Show();
+        }
+
+
+
     }
 }
