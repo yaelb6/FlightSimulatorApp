@@ -18,9 +18,8 @@ namespace ex1_JennyAndYael
         public MyClient()
         {
             //ip and port from app config
-            connectionIp = ConfigurationManager.ConnectionStrings["ip"].ConnectionString.ToString();
-            connectionPort = Convert.ToInt32(ConfigurationManager.ConnectionStrings["port"].ConnectionString.ToString());
-            
+            connectionIp = Properties.Settings.Default.ServerIPValue;
+            connectionPort = Convert.ToInt32(Properties.Settings.Default.PortValue);
 
         }
         public void connect()
