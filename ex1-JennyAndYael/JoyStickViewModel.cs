@@ -32,7 +32,6 @@ namespace ex1_JennyAndYael
             this.elevator = y;
             NotifyPropertyChanged("VM_" + "rudder");
             NotifyPropertyChanged("VM_" + "elevator");
-            Console.WriteLine("Moved! x=" + x + "y=" + y);
         }
         public void NotifyPropertyChanged(string propName)
         {
@@ -56,7 +55,6 @@ namespace ex1_JennyAndYael
             {
                 this.throttle = value;
                 simulatorModel.updateThrottle(Double.Parse(throttle));
-                Console.WriteLine("Throttle is updated!");
 
             }
         }
@@ -78,7 +76,6 @@ namespace ex1_JennyAndYael
             {
                 aileron = value;
                 simulatorModel.updateAileron(Double.Parse(aileron));
-                Console.WriteLine("aileron is updated!");
             }
         }
         public string VM_rudder
