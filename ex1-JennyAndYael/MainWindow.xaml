@@ -19,7 +19,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Content="Disconnect" Background="Bisque" Grid.Column="0" Margin="279,10,127.333,265.667"/>
+        <Button Content="Disconnect" Background="Bisque" Grid.Column="0" Margin="279,10,127.333,265.667"
+                 Click="DisconnectButtonClicked"/>
         <Button x:Name="btn" Content="Connect" Background="Bisque" Grid.Column="0" Margin="87,10,319.333,265.667"
                 Click="ButtonClicked"/>
            

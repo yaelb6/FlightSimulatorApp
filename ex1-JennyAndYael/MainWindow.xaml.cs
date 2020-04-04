@@ -10,6 +10,7 @@ namespace ex1_JennyAndYael
     public partial class MainWindow : Window
     {
         MyClient client = new MyClient();
+        MyModel model;
         MapViewModel mapVM;
         BoardViewModel boardVm;
         JoyStickViewModel joyVM;
@@ -17,7 +18,7 @@ namespace ex1_JennyAndYael
         public MainWindow()
         {
             //try the server
-            MyModel model = new MyModel(client);
+            model = new MyModel(client);
             mapVM = new MapViewModel(model);
             boardVm = new BoardViewModel(model);
             joyVM = new JoyStickViewModel(model);
@@ -55,7 +56,13 @@ namespace ex1_JennyAndYael
             SettingsWindow subWindow = new SettingsWindow();
             subWindow.Show();
         }
-
+        private void DisconnectButtonClicked(object sender, RoutedEventArgs e)
+        {
+            model.setStop(true);
+            client.disconnect();
+            this.Close();
+        }
+        
 
 
     }

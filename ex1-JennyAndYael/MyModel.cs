@@ -39,6 +39,10 @@ namespace ex1_JennyAndYael
         private string error_map = null;
         private string slow_server = null;
 
+        public void setStop(bool val)
+        {
+            this.stop = val;
+        }
         public void updateRudderAndElevator (double rudder, double elevator)
         {
             this.rudder = rudder;
