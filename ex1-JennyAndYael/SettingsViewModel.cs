@@ -4,12 +4,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.Net.Sockets;
 
 namespace ex1_JennyAndYael
 {
     class SettingsViewModel : INotifyPropertyChanged
     {
         private ISettingsModel model;
+        private IPAddress iPAddress;
+        private string error_msg = null;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public SettingsViewModel(ISettingsModel model)
@@ -23,8 +27,15 @@ namespace ex1_JennyAndYael
             get { return model.ServerIP; }
             set
             {
-                model.ServerIP = value;
-                NotifyPropertyChanged("ServerIP");
+                if (IPAddress.TryParse(value, out iPAddress) && iPAddress.ToString().Equals(value))
+                {
+                    model.ServerIP = value;
+                    NotifyPropertyChanged("ServerIP");
+                    VM_Wrong_details = null;
+                } else
+                {
+                    VM_Wrong_details = "Wrong IP address";
+                }
             }
         }
         public string ServerPort
@@ -32,8 +43,28 @@ namespace ex1_JennyAndYael
             get { return model.ServerPort; }
             set
             {
-                model.ServerPort = value;
-                NotifyPropertyChanged("ServerPort");
+                if (!value.All(char.IsDigit))
+                {
+                    VM_Wrong_details = "Wrong port";
+                }
+                else
+                {
+                    VM_Wrong_details = null;
+                    model.ServerPort = value;
+                    NotifyPropertyChanged("ServerPort");
+                }
+            }
+        }
+        public string VM_Wrong_details
+        {
+            get
+            {
+                return error_msg;
+            } 
+            set
+            {
+                error_msg = value;
+                NotifyPropertyChanged("VM_Wrong_details");
             }
         }
         public void NotifyPropertyChanged(string propName)
@@ -42,7 +73,6 @@ namespace ex1_JennyAndYael
         }
         public void SaveSettings()
         {
-
             model.SaveSettings();
         }
         public void ResetToDefaultSettings()

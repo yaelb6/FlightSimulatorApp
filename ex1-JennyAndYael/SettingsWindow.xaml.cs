@@ -30,10 +30,13 @@ namespace ex1_JennyAndYael
         }
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            vm.SaveSettings();
-            MainWindow win = new MainWindow();
-            win.Show();
-            this.Close();
+            if (vm.VM_Wrong_details == null)
+            {
+                vm.SaveSettings();
+                MainWindow win = new MainWindow();
+                win.Show();
+                this.Close();
+            }
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

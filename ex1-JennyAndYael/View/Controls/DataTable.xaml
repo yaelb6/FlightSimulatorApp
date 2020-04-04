@@ -9,6 +9,8 @@
         <Paragraph LineHeight="5">
             <TextBlock Foreground="Red" Text="{Binding VM_Error_map, Mode=OneWay}">
             </TextBlock>
+            <TextBlock Foreground="Red" Text="{Binding VM_Error_dashboard, Mode=OneWay}">
+            </TextBlock>
             <TextBlock Foreground="Red" Text="{Binding VM_Slow_server, Mode=OneWay}">
             </TextBlock>
             <TextBlock Foreground="Red" Text="{Binding VM_Disconnected_server, Mode=OneWay}">
