@@ -80,5 +80,12 @@ namespace ex1_JennyAndYael
                 return simulatorModel.Slow_server;
             }
         }
+        public string VM_Disconnected_server
+        {
+            get
+            {
+                return simulatorModel.Disconnected_server;
+            }
+        }
     }
 }

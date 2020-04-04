@@ -38,6 +38,7 @@ namespace ex1_JennyAndYael
 
         private string error_map = null;
         private string slow_server = null;
+        private string server_disconnected = null;
 
         public void setStop(bool val)
         {
@@ -229,6 +230,19 @@ namespace ex1_JennyAndYael
                 NotifyPropertyChanged("Slow_server");
             }
         }
+        public string Disconnected_server
+        {
+            get
+            {
+                return server_disconnected;
+            }
+            set
+            {
+                server_disconnected = value;
+                Slow_server = null;
+                NotifyPropertyChanged("Disconnected_server");
+            }
+        }
         public MyModel(MyClient telnetClient)
         {
             this.telnetClient = telnetClient;
@@ -252,6 +266,7 @@ namespace ex1_JennyAndYael
                 while (!stop)
                 {
                     string message;
+                    string responseData;
                     // get 8 values for data table
                     message = "get /instrumentation/heading-indicator/indicated-heading-deg\n";
                     try
@@ -259,6 +274,9 @@ namespace ex1_JennyAndYael
                         if (telnetClient.get(message).Equals("ERR\n"))
                         {
                             Indicated_heading_deg = "ERR";
+                        } 
+                        else if (telnetClient.get(message).Equals("disconnected")) {
+                            Disconnected_server = "Error: Server was disconnected";
                         }
                         else
                         {
@@ -275,6 +293,10 @@ namespace ex1_JennyAndYael
                         if (telnetClient.get(message).Equals("ERR\n"))
                         {
                             Gps_indicated_vertical_speed = "ERR";
+                        }
+                        else if (telnetClient.get(message).Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
                         }
                         else
                         {
@@ -293,6 +315,10 @@ namespace ex1_JennyAndYael
                         {
                             Gps_indicated_ground_speed_kt = "ERR";
                         }
+                        else if (telnetClient.get(message).Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
+                        }
                         else
                         {
                             Gps_indicated_ground_speed_kt = telnetClient.get(message).Substring(0, 5);
@@ -309,6 +335,10 @@ namespace ex1_JennyAndYael
                         if (telnetClient.get(message).Equals("ERR\n"))
                         {
                             Airspeed_indicator_indicated_speed_kt = "ERR";
+                        }
+                        else if (telnetClient.get(message).Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
                         }
                         else
                         {
@@ -327,6 +357,10 @@ namespace ex1_JennyAndYael
                         {
                             Gps_indicated_altitude_ft = "ERR";
                         }
+                        else if (telnetClient.get(message).Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
+                        }
                         else
                         {
                             Gps_indicated_altitude_ft = telnetClient.get(message).Substring(0, 5);
@@ -343,6 +377,10 @@ namespace ex1_JennyAndYael
                         if (telnetClient.get(message).Equals("ERR\n"))
                         {
                             Attitude_indicator_internal_roll_deg = "ERR";
+                        }
+                        else if (telnetClient.get(message).Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
                         }
                         else
                         {
@@ -361,6 +399,10 @@ namespace ex1_JennyAndYael
                         {
                             Attitude_indicator_internal_pitch_deg = "ERR";
                         }
+                        else if (telnetClient.get(message).Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
+                        }
                         else
                         {
                             Attitude_indicator_internal_pitch_deg = telnetClient.get(message).Substring(0, 5);
@@ -378,6 +420,10 @@ namespace ex1_JennyAndYael
                         {
                             Altimeter_indicated_altitude_ft = "ERR";
                         }
+                        else if (telnetClient.get(message).Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
+                        }
                         else
                         {
                             Altimeter_indicated_altitude_ft = telnetClient.get(message).Substring(0, 5);
@@ -392,7 +438,11 @@ namespace ex1_JennyAndYael
                     message = "set /controls/flight/rudder " + this.rudder + "\n";
                     try
                     {
-                        telnetClient.set(message);
+                        responseData = telnetClient.set(message);
+                        if (responseData.Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
+                        }
                     }
                     catch (IOException e)
                     {
@@ -401,7 +451,11 @@ namespace ex1_JennyAndYael
                     message = "set /controls/flight/throttle " + this.throttle + "\n";
                     try
                     {
-                        telnetClient.set(message);
+                        responseData = telnetClient.set(message);
+                        if (responseData.Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
+                        }
                     } catch (IOException e)
                     {
                         Slow_server = "Error: Server is too slow";
@@ -409,7 +463,11 @@ namespace ex1_JennyAndYael
                     message = "set /controls/flight/aileron " + this.aileron + "\n";
                     try
                     {
-                        telnetClient.set(message);
+                        responseData = telnetClient.set(message);
+                        if (responseData.Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
+                        }
                     }
                     catch (IOException e)
                     {
@@ -418,7 +476,11 @@ namespace ex1_JennyAndYael
                     message = "set /controls/flight/elevator " + this.elevator + "\n";
                     try
                     {
-                        telnetClient.set(message);
+                        responseData = telnetClient.set(message);
+                        if (responseData.Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
+                        }
                     }
                     catch (Exception e)
                     {
@@ -432,6 +494,10 @@ namespace ex1_JennyAndYael
                         if (telnetClient.get(message).Equals("ERR\n"))
                         {
                             Error_map = "Error : ERR in map coordinates";
+                        }
+                        else if (telnetClient.get(message).Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
                         }
                         else
                         {
@@ -449,6 +515,10 @@ namespace ex1_JennyAndYael
                         if (telnetClient.get(message).Equals("ERR\n"))
                         {
                             Error_map = "Error : ERR in map coordinates";
+                        }
+                        else if (telnetClient.get(message).Equals("disconnected"))
+                        {
+                            Disconnected_server = "Error: Server was disconnected";
                         }
                         else
                         {

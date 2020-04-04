@@ -28,25 +28,44 @@ namespace ex1_JennyAndYael
             tcpClient.ReceiveTimeout = 10000;
         }
 
-        public void set(string message)
+        public string set(string message)
         {
             // Translate the passed message into ASCII and store it as a Byte array.
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
             // Get a client stream for reading and writing.
-            stream = tcpClient.GetStream();
+            try
+            {
+                stream = tcpClient.GetStream();
+            } catch (InvalidOperationException e)
+            {
+                return "disconnected";
+            }
             // Send the message to the connected TcpServer.
             stream.Write(data, 0, data.Length);
             String responseData = String.Empty;
             // Read the first batch of the TcpServer response bytes.
-            Int32 bytes = stream.Read(data, 0, data.Length);
-            responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+            if (stream.CanRead)
+            {
+                Int32 bytes = stream.Read(data, 0, data.Length);
+                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+                return responseData;
+            } else
+            {
+                return "disconnected";
+            }
         }
 
         public string get(string message)
         {
             // Receive the TcpServer.response.
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
-            stream = tcpClient.GetStream();
+            try
+            {
+                stream = tcpClient.GetStream();
+            } catch (InvalidOperationException e)
+            {
+                return "disconnected";
+            }
             // Send the message to the connected TcpServer - the server need to know what kind of data I want. 
             stream.Write(data, 0, data.Length);
             String responseData = String.Empty;
@@ -54,9 +73,9 @@ namespace ex1_JennyAndYael
             Int32 bytes = stream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
             return responseData;
-        }
 
-       public void disconnect()
+        }
+            public void disconnect()
         {
             tcpClient.Close();
         }

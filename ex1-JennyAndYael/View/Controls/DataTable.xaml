@@ -11,6 +11,8 @@
             </TextBlock>
             <TextBlock Foreground="Red" Text="{Binding VM_Slow_server, Mode=OneWay}">
             </TextBlock>
+            <TextBlock Foreground="Red" Text="{Binding VM_Disconnected_server, Mode=OneWay}">
+            </TextBlock>
         </Paragraph>
         <Table x:Name="simulatorData">
             <Table.Columns>
