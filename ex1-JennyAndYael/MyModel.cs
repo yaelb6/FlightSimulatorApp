@@ -167,16 +167,20 @@ namespace ex1_JennyAndYael
             }
             set
             {
-                if ((value > 90) || (value < -90))
+                if ((value > 85) || (value < -85))
                 {
-                    if (value > 90)
+                    if (value > 85)
                     {
-                        value = 90;
+                        value = 85;
                     } else
                     {
-                        value = -90;
+                        value = -85;
                     }
                     Error_map = "Error : Invalid map coordinates";
+                }
+                else
+                {
+                    Error_map = null;
                 }
                 latitude = value;
                 NotifyPropertyChanged("Latitude_deg");
@@ -201,6 +205,10 @@ namespace ex1_JennyAndYael
                         value = -180;
                     }
                     Error_map = "Error : Invalid map coordinates";
+                } 
+                else
+                {
+                    Error_map = null;
                 }
                 longitude = value;
                 NotifyPropertyChanged("Longitude_deg");
@@ -501,7 +509,14 @@ namespace ex1_JennyAndYael
                         }
                         else
                         {
-                            Latitude_deg = Double.Parse(telnetClient.get(message));
+                            if (double.TryParse(telnetClient.get(message), out latitude))
+                            {
+                                Latitude_deg = Double.Parse(telnetClient.get(message));
+                            }
+                            else
+                            {
+                                continue;
+                            }
                         }
                     }
                     catch (IOException e)
@@ -522,7 +537,14 @@ namespace ex1_JennyAndYael
                         }
                         else
                         {
-                            Longitude_deg = Double.Parse(telnetClient.get(message));
+                            if (double.TryParse(telnetClient.get(message), out longitude))
+                            {
+                                Longitude_deg = Double.Parse(telnetClient.get(message));
+                            }
+                            else
+                            {
+                                continue;
+                            }
                         }
                     }
                     catch (IOException e)
