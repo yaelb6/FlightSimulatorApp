@@ -73,6 +73,13 @@ namespace ex1_JennyAndYael
                 return simulatorModel.Error_map;
             }
         }
+        public string VM_Error_dashboard
+        {
+            get
+            {
+                return simulatorModel.Error_dashboard;
+            }
+        }
         public string VM_Slow_server
         {
             get

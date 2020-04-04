@@ -39,6 +39,7 @@ namespace ex1_JennyAndYael
         private string error_map = null;
         private string slow_server = null;
         private string server_disconnected = null;
+        private string error_dashboard = null;
 
         public void setStop(bool val)
         {
@@ -70,6 +71,13 @@ namespace ex1_JennyAndYael
             }
             set
             {
+                if (value.Equals("ERR"))
+                {
+                    Error_dashboard = "Error in dashboard values";
+                } else
+                {
+                    Error_dashboard = null;
+                }
                 indicated_heading_deg = value;
                 NotifyPropertyChanged("Indicated_heading_deg");
             }
@@ -83,6 +91,14 @@ namespace ex1_JennyAndYael
             }
             set
             {
+                if (value.Equals("ERR"))
+                {
+                    Error_dashboard = "Error in dashboard values";
+                }
+                else
+                {
+                    Error_dashboard = null;
+                }
                 gps_indicated_vertical_speed = value;
                 NotifyPropertyChanged("Gps_indicated_vertical_speed");
             }
@@ -95,6 +111,14 @@ namespace ex1_JennyAndYael
             }
             set
             {
+                if (value.Equals("ERR"))
+                {
+                    Error_dashboard = "Error in dashboard values";
+                }
+                else
+                {
+                    Error_dashboard = null;
+                }
                 gps_indicated_ground_speed_kt = value;
                 NotifyPropertyChanged("Gps_indicated_ground_speed_kt");
             }
@@ -107,6 +131,14 @@ namespace ex1_JennyAndYael
             }
             set
             {
+                if (value.Equals("ERR"))
+                {
+                    Error_dashboard = "Error in dashboard values";
+                }
+                else
+                {
+                    Error_dashboard = null;
+                }
                 airspeed_indicator_indicated_speed_kt = value;
                 NotifyPropertyChanged("Airspeed_indicator_indicated_speed_kt");
             }
@@ -119,6 +151,14 @@ namespace ex1_JennyAndYael
             }
             set
             {
+                if (value.Equals("ERR"))
+                {
+                    Error_dashboard = "Error in dashboard values";
+                }
+                else
+                {
+                    Error_dashboard = null;
+                }
                 gps_indicated_altitude_ft = value;
                 NotifyPropertyChanged("Gps_indicated_altitude_ft");
             }
@@ -131,6 +171,14 @@ namespace ex1_JennyAndYael
             }
             set
             {
+                if (value.Equals("ERR"))
+                {
+                    Error_dashboard = "Error in dashboard values";
+                }
+                else
+                {
+                    Error_dashboard = null;
+                }
                 attitude_indicator_internal_roll_deg = value;
                 NotifyPropertyChanged("Attitude_indicator_internal_roll_deg");
             }
@@ -143,6 +191,14 @@ namespace ex1_JennyAndYael
             }
             set
             {
+                if (value.Equals("ERR"))
+                {
+                    Error_dashboard = "Error in dashboard values";
+                }
+                else
+                {
+                    Error_dashboard = null;
+                }
                 attitude_indicator_internal_pitch_deg = value;
                 NotifyPropertyChanged("Attitude_indicator_internal_pitch_deg");
             }
@@ -155,6 +211,14 @@ namespace ex1_JennyAndYael
             }
             set
             {
+                if (value.Equals("ERR"))
+                {
+                    Error_dashboard = "Error in dashboard values";
+                }
+                else
+                {
+                    Error_dashboard = null;
+                }
                 altimeter_indicated_altitude_ft = value;
                 NotifyPropertyChanged("Altimeter_indicated_altitude_ft");
             }
@@ -175,11 +239,11 @@ namespace ex1_JennyAndYael
                     } else
                     {
                         value = -85;
+                        
                     }
                     Error_map = "Error : Invalid map coordinates";
-                }
-                else
-                {
+                } 
+                else if ((longitude < 180) && (longitude > -180)) {
                     Error_map = null;
                 }
                 latitude = value;
@@ -205,8 +269,8 @@ namespace ex1_JennyAndYael
                         value = -180;
                     }
                     Error_map = "Error : Invalid map coordinates";
-                } 
-                else
+                }
+                else if ((latitude < 85) && (latitude > -85))
                 {
                     Error_map = null;
                 }
@@ -224,6 +288,18 @@ namespace ex1_JennyAndYael
             {
                 error_map = value;
                 NotifyPropertyChanged("Error_map");
+            }
+        }
+        public string Error_dashboard
+        {
+            get
+            {
+                return error_dashboard;
+            }
+            set
+            {
+                error_dashboard = value;
+                NotifyPropertyChanged("Error_dashboard");
             }
         }
         public string Slow_server

@@ -4,18 +4,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace ex1_JennyAndYael
 {
     class ApplicationSettingsModel : ISettingsModel
     {
 
-
         public string ServerIP
         {
             get { return Properties.Settings.Default.ServerIPValue; }
-            set { Properties.Settings.Default.ServerIPValue = value;
-
+            set {
+                Properties.Settings.Default.ServerIPValue = value;
             }
         }
         public string ServerPort

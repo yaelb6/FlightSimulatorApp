@@ -21,11 +21,10 @@
         </Grid.RowDefinitions>
         
         <Ma:Map x:Name="map" Grid.Column="0" Grid.RowSpan="2" Margin="10,28,10,50.8" Loaded="map_Loaded"/>
-        <Board:DataTable x:Name="board" Height="Auto" Width="Auto" Grid.ColumnSpan="2" Margin="527,10,10.333,310.333" Grid.RowSpan="2" />
-        <Joy:JoyAndSlider x:Name="joystickSlider" Grid.Row="1"  Grid.Column="1" Margin="0,8.4,0.2,8.8" />
+       <Board:DataTable x:Name="board" Height="Auto" Width="Auto" Grid.ColumnSpan="2" Margin="527,10,10.333,294.333" Grid.RowSpan="2" />
+        <Joy:JoyAndSlider x:Name="joystickSlider" Grid.Row="1" Margin="522,16.333,-15.667,0.333" Grid.ColumnSpan="2" />
         <Button Content="Exit" HorizontalAlignment="Left" Margin="10,281.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"
                  Click="DisconnectButtonClicked"/>
-
 
     </Grid>
 </Window>

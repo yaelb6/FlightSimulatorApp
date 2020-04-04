@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Net;
 
 
 
@@ -14,7 +15,6 @@ namespace ex1_JennyAndYael
         void SaveSettings();
         string ServerIP { get; set; }
         string ServerPort { get; set; }
-
         void ResetSettings();
     }
 }
