@@ -8,6 +8,7 @@ using System.Net;
 
 namespace FlightSimulator
 {
+    //This is the window that the user can enter ip and port to login to the application.
     class ApplicationSettingsModel : ISettingsModel
     {
 
@@ -16,6 +17,7 @@ namespace FlightSimulator
             get { return Properties.Settings.Default.ServerIPValue; }
             set
             {
+                //If the ip changed, update it accordingly.
                 Properties.Settings.Default.ServerIPValue = value;
             }
         }
@@ -24,6 +26,7 @@ namespace FlightSimulator
             get { return Properties.Settings.Default.PortValue; }
             set
             {
+                //If the port changed,update it accordingly.
                 Properties.Settings.Default.PortValue = value;
             }
         }
@@ -32,10 +35,12 @@ namespace FlightSimulator
 
         public void SaveSettings()
         {
+            //Save the ip and port.
             Properties.Settings.Default.Save();
         }
         public void ResetSettings()
         {
+            //Reset the ip and port.
             Properties.Settings.Default.Reset();
         }
     }

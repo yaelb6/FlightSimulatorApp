@@ -12,17 +12,18 @@ namespace FlightSimulator
 
         public MyClient()
         {
-            //ip and port from app config
+            //Define Ip and port from app config.
             connectionIp = Properties.Settings.Default.ServerIPValue;
             connectionPort = Convert.ToInt32(Properties.Settings.Default.PortValue);
 
         }
+        //This method defines the connection to the server.
         public void Connect()
         {
             tcpClient = new TcpClient(connectionIp, connectionPort);
             tcpClient.ReceiveTimeout = 10000;
         }
-
+        //This method set the message to the server.
         public string Set(string message)
         {
             // Translate the passed message into ASCII and store it as a Byte array.
@@ -51,7 +52,7 @@ namespace FlightSimulator
                 return "disconnected";
             }
         }
-
+        //This method get the data from the server.
         public string Get(string message)
         {
             // Receive the TcpServer.response.
@@ -80,6 +81,7 @@ namespace FlightSimulator
             }
 
         }
+        //This method close the connection with the server.
         public void Disconnect()
         {
             tcpClient.Close();

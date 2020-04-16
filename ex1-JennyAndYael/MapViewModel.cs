@@ -9,7 +9,8 @@ namespace FlightSimulator
         private MyModel simulatorModel;
         public Location vmLocation;
         public event PropertyChangedEventHandler PropertyChanged;
-        //constructor
+        
+        //This method is the constructor and defines the componenet of the map view model.
         public MapViewModel(MyModel model)
         {
             this.simulatorModel = model;
@@ -18,6 +19,7 @@ namespace FlightSimulator
                 NotifyPropertyChanged("Vm" + e.PropertyName);
             };
         }
+        //This method notify the propName changed.
         public void NotifyPropertyChanged(string propName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VmLocation"));

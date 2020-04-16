@@ -3,7 +3,7 @@
 namespace FlightSimulator
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -13,6 +13,7 @@ namespace FlightSimulator
         BoardViewModel boardVm;
         JoyStickViewModel joyVm;
 
+        //This method is the constructor that defines the component for the main window of the game.
         public MainWindow()
         {
             //try the server
@@ -28,11 +29,13 @@ namespace FlightSimulator
             joystickSlider.DataContext = joyVm;
             joystickSlider.SetVmJoyStick(joyVm);
         }
+        //This method shows the next window after the button clicked.
         private void ButtonClicked(object sender, RoutedEventArgs e)
         {
             SettingsWindow subWindow = new SettingsWindow();
             subWindow.Show();
         }
+        //This method close the window and the connection with the server after the button clicked.
         private void DisconnectButtonClicked(object sender, RoutedEventArgs e)
         {
             model.SetStop(true);

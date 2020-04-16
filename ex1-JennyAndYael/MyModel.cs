@@ -7,7 +7,6 @@ namespace FlightSimulator
 {
     public class MyModel : IModel
     {
-        //INotifyPropertyChanged implementation:
         public event PropertyChangedEventHandler PropertyChanged;
 
         MyClient telnetClient;
@@ -22,13 +21,13 @@ namespace FlightSimulator
         private string attitudePitch;
         private string altimeterAltitude;
 
-        //4 fields for joystick
+        //4 fields for joystick.
         private double rudder;
         private double throttle;
         private double aileron;
         private double elevator;
 
-        //2 fields for map
+        //2 fields for map.
         private double latitude;
         private double longitude;
 
@@ -37,23 +36,28 @@ namespace FlightSimulator
         private string serverDisconnected = null;
         private string errorDashboard = null;
 
+        //This method change the boolean value
         public void SetStop(bool val)
         {
             this.stop = val;
         }
+        //This method updates the rudder and elevator values.
         public void UpdateRudderAndElevator(double rudder, double elevator)
         {
             this.rudder = rudder;
             this.elevator = elevator;
         }
+        //This method updates the aileron values.
         public void UpdateAileron(double aileron)
         {
             this.aileron = aileron;
         }
+        //This method updates the throttle values.
         public void UpdateThrottle(double throttle)
         {
             this.throttle = throttle;
         }
+        //This method updates that the property changed.
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -341,6 +345,8 @@ namespace FlightSimulator
             stop = true;
             telnetClient.Disconnect();
         }
+        //This method is a loop of communication with the server.
+        //Until the boolean flag -stop, changes, it send and recieve data from the server.
         public void Start()
         {
             new Thread(delegate ()
@@ -350,7 +356,7 @@ namespace FlightSimulator
                 {
                     string message;
                     string responseData;
-                    // get 8 values for data table
+                    // Get 8 values for data table.
                     message = "get /instrumentation/heading-indicator/indicated-heading-deg\n";
                     try
                     {
@@ -518,7 +524,7 @@ namespace FlightSimulator
                         SlowServer = "Error: Server is too slow";
                     }
 
-                    //set 4 properties from joystick
+                    //Set 4 properties from joystick.
                     message = "set /controls/flight/rudder " + this.rudder + "\n";
                     try
                     {
@@ -572,7 +578,7 @@ namespace FlightSimulator
                         SlowServer = "Error: Server is too slow";
                     }
 
-                    //get 2 properties for map
+                    //Get 2 properties for map.
                     message = "get /position/latitude-deg\n";
                     try
                     {
@@ -627,8 +633,9 @@ namespace FlightSimulator
                     {
                         SlowServer = "Error: Server is too slow";
                     }
-                    // the same for the other sensors properties
-                    Thread.Sleep(250);// read the data in 4Hz
+                    // The same for the other sensors properties.
+                    // Read the data in 4Hz.
+                    Thread.Sleep(250);
                 }
             }).Start();
         }

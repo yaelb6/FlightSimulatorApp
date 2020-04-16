@@ -15,12 +15,13 @@ using System.Windows.Shapes;
 namespace FlightSimulator
 {
     /// <summary>
-    /// Interaction logic for InputWindow.xaml
+    /// Interaction logic for InputWindow.xaml.
     /// </summary>
     public partial class SettingsWindow : Window
     {
         private SettingsViewModel vm;
 
+        //This is the constructor that initialize the settings window componenet
         public SettingsWindow()
         {
             InitializeComponent();
@@ -28,6 +29,8 @@ namespace FlightSimulator
             vm = new SettingsViewModel(modelApp);
             this.DataContext = vm;
         }
+        //This method defines the logic when the user cliecked OK.
+        //It save the settings and open the next window.
         private void ButtonOkClick(object sender, RoutedEventArgs e)
         {
             if (vm.VmWrongDetails == null)
@@ -38,24 +41,16 @@ namespace FlightSimulator
                 this.Close();
             }
         }
+        //This method defines the logic when the user clicked Cancel.
+        //It close the window.
         private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-    
+        //This method defines the logic when the checkBox is clicked.
         private void CheckBoxChecked(object sender, RoutedEventArgs e)
         {
             vm.ResetToDefaultSettings();
-        }
-
-        private void CheckBoxUnchecked(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void TextPortTextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

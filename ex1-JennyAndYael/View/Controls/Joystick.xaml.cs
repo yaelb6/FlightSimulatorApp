@@ -6,7 +6,7 @@ using System.Windows.Input;
 namespace FlightSimulator.View.Controls
 {
     /// <summary>
-    /// Interaction logic for Joystick.xaml
+    /// Interaction logic for Joystick.xaml.
     /// </summary>
     public partial class Joystick : UserControl
     {
@@ -18,13 +18,13 @@ namespace FlightSimulator.View.Controls
         {
             InitializeComponent();
         }
-
+        //This function set the Joystick's view model be the given view model.
         public void SetVm(JoyStickViewModel joyVm)
         {
             this.joyVm = joyVm;
         }
         void CenterKnobCompleted(object sender, EventArgs e) { }
-
+        //This function define the actions when the mouse is down.
         private void KnobMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -32,13 +32,14 @@ namespace FlightSimulator.View.Controls
                 point = e.GetPosition(this);
             }
         }
-
+        //This function define the actions when the mouse is up and alocate it position to the starting point.
         private void KnobMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;
         }
-
+        //This function define the actions when the mouse  is moving.
+        //It calculated the new posotion and check if its in the frame and update the VM accordingly.
         private void KnobMouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -58,8 +59,8 @@ namespace FlightSimulator.View.Controls
                 }
             }
         }
-
-        private void EllipseMouseLeave(object sender, MouseEventArgs e)
+        //This function dbring the mouse position to the starting point.
+        private void ellipse_MouseLeave(object sender, MouseEventArgs e)
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;

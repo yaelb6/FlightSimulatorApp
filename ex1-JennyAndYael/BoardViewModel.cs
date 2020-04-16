@@ -7,6 +7,8 @@ namespace FlightSimulator
     {
         private MyModel simulatorModel;
         public event PropertyChangedEventHandler PropertyChanged;
+
+        //This method defines the Board view model to be the given view model.
         public BoardViewModel(MyModel model)
         {
             this.simulatorModel = model;
@@ -15,6 +17,7 @@ namespace FlightSimulator
                 NotifyPropertyChanged("Vm" + e.PropertyName);
             };
         }
+        //This method is for notifying that the given propName is changed.
         public void NotifyPropertyChanged(string propName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));

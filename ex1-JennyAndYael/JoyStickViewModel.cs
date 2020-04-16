@@ -12,26 +12,27 @@ namespace FlightSimulator
         private double elevator;
 
         public event PropertyChangedEventHandler PropertyChanged;
+        //This method defines the view model's model to be the given model.
         public JoyStickViewModel(MyModel model)
         {
             this.simulatorModel = model;
         }
+        //This method defines the actions when the joystick moves.
         public void JoyStickMoved(double rudder, double elevator)
         {
             double x, y;
-            //Normalize 
+            //Normalize the data to be between -1 to 1.
             x = 2 * ((rudder - (-140.1)) / (140.1 - (-140.1))) - 1;
             y = 2 * ((elevator - (-140.1)) / (140.1 - (-140.1))) - 1;
-            //simulatorModel.updateRudderAndElevator(rudder, elevator);
             simulatorModel.UpdateRudderAndElevator(x, y);
             this.rudder = x;
             this.elevator = y;
             NotifyPropertyChanged("Vm" + "Rudder");
             NotifyPropertyChanged("Vm" + "Elevator");
         }
+        //This method update that the propName changed.
         public void NotifyPropertyChanged(string propName)
         {
-            //paul's example, if it doesn't work try like eli's example
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
         public string VmThrottle

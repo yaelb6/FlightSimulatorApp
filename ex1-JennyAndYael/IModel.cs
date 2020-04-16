@@ -4,9 +4,11 @@ namespace FlightSimulator
 {
     public interface IModel : INotifyPropertyChanged
     {
-        // connection to the server
+        //This method used for connection to the server.
         void Connect();
+        //This method used for disconnection to the server.
         void Disconnect();
+        //This method used for starting the communication with the server.
         void Start();
 
         // data table properties
