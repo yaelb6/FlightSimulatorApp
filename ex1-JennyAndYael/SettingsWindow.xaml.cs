@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     /// <summary>
     /// Interaction logic for InputWindow.xaml.
@@ -31,9 +31,9 @@ namespace ex1_JennyAndYael
         }
         //This method defines the logic when the user cliecked OK.
         //It save the settings and open the next window.
-        private void btnOK_Click(object sender, RoutedEventArgs e)
+        private void ButtonOkClick(object sender, RoutedEventArgs e)
         {
-            if (vm.VM_Wrong_details == null)
+            if (vm.VmWrongDetails == null)
             {
                 vm.SaveSettings();
                 MainWindow win = new MainWindow();
@@ -41,26 +41,16 @@ namespace ex1_JennyAndYael
                 this.Close();
             }
         }
-        //This method defines the logic when the user cliecked Cancel.
+        //This method defines the logic when the user clicked Cancel.
         //It close the window.
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
         //This method defines the logic when the checkBox is clicked.
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void CheckBoxChecked(object sender, RoutedEventArgs e)
         {
             vm.ResetToDefaultSettings();
-        }
-
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void txtPort_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

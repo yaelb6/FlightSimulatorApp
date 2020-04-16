@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     //This is the window that the user can enter ip and port to login to the application.
     class ApplicationSettingsModel : ISettingsModel

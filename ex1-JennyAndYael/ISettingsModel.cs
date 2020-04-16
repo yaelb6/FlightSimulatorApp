@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.Net;
+﻿using System.ComponentModel;
 
 
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     public interface ISettingsModel : INotifyPropertyChanged
     {

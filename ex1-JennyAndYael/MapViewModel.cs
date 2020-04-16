@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using Microsoft.Maps.MapControl.WPF;
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     public class MapViewModel : INotifyPropertyChanged
     {
         private MyModel simulatorModel;
-        public Location VM_location;
+        public Location vmLocation;
         public event PropertyChangedEventHandler PropertyChanged;
         
         //This method is the constructor and defines the componenet of the map view model.
@@ -20,37 +16,38 @@ namespace ex1_JennyAndYael
             this.simulatorModel = model;
             simulatorModel.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
             {
-                NotifyPropertyChanged("VM_" + e.PropertyName);
+                NotifyPropertyChanged("Vm" + e.PropertyName);
             };
         }
         //This method notify the propName changed.
-        public void NotifyPropertyChanged(string propName) {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VM_Location"));
-            VM_Location = new Location(VM_Latitude_deg, VM_Longitude_deg);
+        public void NotifyPropertyChanged(string propName)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VmLocation"));
+            VmLocation = new Location(VmLatitude, VmLongitude);
         }
-        public double VM_Latitude_deg
+        public double VmLatitude
         {
             get
             {
-                return simulatorModel.Latitude_deg;
+                return simulatorModel.Latitude;
             }
         }
-        public double VM_Longitude_deg
+        public double VmLongitude
         {
             get
             {
-                return simulatorModel.Longitude_deg;
+                return simulatorModel.Longitude;
             }
         }
-        public Location VM_Location
+        public Location VmLocation
         {
             get
             {
-                return new Location(VM_Latitude_deg, VM_Longitude_deg);
+                return new Location(VmLatitude, VmLongitude);
             }
             set
             {
-                VM_location = value;
+                vmLocation = value;
             }
         }
     }
