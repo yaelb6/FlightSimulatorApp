@@ -16,6 +16,7 @@ namespace ex1_JennyAndYael
         private string error_msg = null;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        //This method set the view model's model be the given model.
         public SettingsViewModel(ISettingsModel model)
         {
             this.model = model;
@@ -67,14 +68,17 @@ namespace ex1_JennyAndYael
                 NotifyPropertyChanged("VM_Wrong_details");
             }
         }
+        //This method updates the the poperty is changed.
         public void NotifyPropertyChanged(string propName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
+        //This method saves the settings - the default or the user input.
         public void SaveSettings()
         {
             model.SaveSettings();
         }
+        //This method reset the settings to the default.
         public void ResetToDefaultSettings()
         {
 

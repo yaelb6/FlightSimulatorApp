@@ -5,7 +5,7 @@ using System.Windows.Controls;
 namespace ex1_JennyAndYael
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -15,6 +15,7 @@ namespace ex1_JennyAndYael
         BoardViewModel boardVm;
         JoyStickViewModel joyVM;
 
+        //This method is the constructor that defines the component for the main window of the game.
         public MainWindow()
         {
             //try the server
@@ -22,7 +23,7 @@ namespace ex1_JennyAndYael
             mapVM = new MapViewModel(model);
             boardVm = new BoardViewModel(model);
             joyVM = new JoyStickViewModel(model);
-            model.start();
+            model.Start();
             InitializeComponent();
             this.DataContext = mapVM;
             map.DataContext = mapVM;
@@ -50,16 +51,17 @@ namespace ex1_JennyAndYael
         {
 
         }
-
+        //This method shows the next window after the button clicked.
         private void ButtonClicked(object sender, RoutedEventArgs e)
         {
             SettingsWindow subWindow = new SettingsWindow();
             subWindow.Show();
         }
+        //This method close the window and the connection with the server after the button clicked.
         private void DisconnectButtonClicked(object sender, RoutedEventArgs e)
         {
             model.setStop(true);
-            client.disconnect();
+            client.Disconnect();
             this.Close();
         }
         

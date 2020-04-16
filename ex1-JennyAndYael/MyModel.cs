@@ -11,12 +11,11 @@ namespace ex1_JennyAndYael
 {
     public class MyModel : IModel
     {
-        //INotifyPropertyChanged implementation:
         public event PropertyChangedEventHandler PropertyChanged;
 
         MyClient telnetClient;
         volatile Boolean stop;
-        // 8 fields for data table
+        // 8 fields for data table.
         private string indicated_heading_deg;
         private string gps_indicated_vertical_speed;
         private string gps_indicated_ground_speed_kt;
@@ -26,13 +25,13 @@ namespace ex1_JennyAndYael
         private string attitude_indicator_internal_pitch_deg;
         private string altimeter_indicated_altitude_ft;
 
-        //4 fields for joystick
+        //4 fields for joystick.
         private double rudder;
         private double throttle;
         private double aileron;
         private double elevator;
 
-        //2 fields for map
+        //2 fields for map.
         private double latitude;
         private double longitude;
 
@@ -41,23 +40,28 @@ namespace ex1_JennyAndYael
         private string server_disconnected = null;
         private string error_dashboard = null;
 
+        //This method change the boolean value.
         public void setStop(bool val)
         {
             this.stop = val;
         }
+        //This method updates the rudder and elevator values.
         public void updateRudderAndElevator (double rudder, double elevator)
         {
             this.rudder = rudder;
             this.elevator = elevator;
         }
+        //This method updates the aileron values.
         public void updateAileron (double aileron)
         {
             this.aileron = aileron;
         }
+        //This method updates the throttle values.
         public void updateThrottle (double throttle)
         {
             this.throttle = throttle;
         }
+        //This method updates that the property changed.
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -333,25 +337,27 @@ namespace ex1_JennyAndYael
             stop = false;
         }
 
-        public void connect()
+        public void Connect()
         {
-            telnetClient.connect();
+            telnetClient.Connect();
         }
-        public void disconnect()
+        public void Disconnect()
         {
             stop = true;
-            telnetClient.disconnect();
+            telnetClient.Disconnect();
         }
-        public void start()
+        //This method is a loop of communication with the server.
+        //Until the boolean flag -stop, changes, it send and recieve data from the server.
+        public void Start()
         {
             new Thread(delegate ()
             {
-                connect();
+                Connect();
                 while (!stop)
                 {
                     string message;
                     string responseData;
-                    // get 8 values for data table
+                    // Get 8 values for data table.
                     message = "get /instrumentation/heading-indicator/indicated-heading-deg\n";
                     try
                     {
@@ -518,11 +524,11 @@ namespace ex1_JennyAndYael
                         Slow_server = "Error: Server is too slow";
                     }
 
-                    //set 4 properties from joystick
+                    //Set 4 properties from joystick.
                     message = "set /controls/flight/rudder " + this.rudder + "\n";
                     try
                     {
-                        responseData = telnetClient.set(message);
+                        responseData = telnetClient.Set(message);
                         if (responseData.Equals("disconnected"))
                         {
                             Disconnected_server = "Error: Server was disconnected";
@@ -535,7 +541,7 @@ namespace ex1_JennyAndYael
                     message = "set /controls/flight/throttle " + this.throttle + "\n";
                     try
                     {
-                        responseData = telnetClient.set(message);
+                        responseData = telnetClient.Set(message);
                         if (responseData.Equals("disconnected"))
                         {
                             Disconnected_server = "Error: Server was disconnected";
@@ -547,7 +553,7 @@ namespace ex1_JennyAndYael
                     message = "set /controls/flight/aileron " + this.aileron + "\n";
                     try
                     {
-                        responseData = telnetClient.set(message);
+                        responseData = telnetClient.Set(message);
                         if (responseData.Equals("disconnected"))
                         {
                             Disconnected_server = "Error: Server was disconnected";
@@ -560,7 +566,7 @@ namespace ex1_JennyAndYael
                     message = "set /controls/flight/elevator " + this.elevator + "\n";
                     try
                     {
-                        responseData = telnetClient.set(message);
+                        responseData = telnetClient.Set(message);
                         if (responseData.Equals("disconnected"))
                         {
                             Disconnected_server = "Error: Server was disconnected";
@@ -571,7 +577,7 @@ namespace ex1_JennyAndYael
                         Slow_server = "Error: Server is too slow";
                     }
 
-                    //get 2 properties for map
+                    //Get 2 properties for map.
                     message = "get /position/latitude-deg\n";
                     try
                     {
@@ -629,8 +635,9 @@ namespace ex1_JennyAndYael
                     }
 
 
-                    // the same for the other sensors properties
-                    Thread.Sleep(250);// read the data in 4Hz
+                    // The same for the other sensors properties.
+                    // Read the data in 4Hz.
+                    Thread.Sleep(250);
                 }
             }).Start();
         }

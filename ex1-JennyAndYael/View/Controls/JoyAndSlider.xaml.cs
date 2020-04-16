@@ -16,16 +16,19 @@ using System.Windows.Shapes;
 namespace ex1_JennyAndYael.View.Controls
 {
     /// <summary>
-    /// Interaction logic for JoyAndSlider.xaml
+    /// Interaction logic for JoyAndSlider.xaml.
     /// </summary>
     public partial class JoyAndSlider : UserControl
     {
         public JoyAndSlider()
         {
+            //This function initialize all the component from the xml.
             InitializeComponent();
         }
+        //This function set the Joystick's view model be the given view model.
         public void setVmJoyS(JoyStickViewModel joyvm)
         {
+
             JoyStickElement.setVm(joyvm);
         }
 

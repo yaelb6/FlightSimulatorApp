@@ -17,18 +17,19 @@ namespace ex1_JennyAndYael
 
         public MyClient()
         {
-            //ip and port from app config
+            //Define Ip and port from app config.
             connectionIp = Properties.Settings.Default.ServerIPValue;
             connectionPort = Convert.ToInt32(Properties.Settings.Default.PortValue);
 
         }
-        public void connect()
+        //This method defines the connection to the server.
+        public void Connect()
         {
             tcpClient = new TcpClient(connectionIp, connectionPort);
             tcpClient.ReceiveTimeout = 10000;
         }
-
-        public string set(string message)
+        //This method set the message to the server.
+        public string Set(string message)
         {
             // Translate the passed message into ASCII and store it as a Byte array.
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
@@ -54,7 +55,7 @@ namespace ex1_JennyAndYael
                 return "disconnected";
             }
         }
-
+        //This method get the data from the server.
         public string get(string message)
         {
             // Receive the TcpServer.response.
@@ -81,7 +82,9 @@ namespace ex1_JennyAndYael
             }
 
         }
-            public void disconnect()
+
+        //This method close the connection with the server.
+            public void Disconnect()
         {
             tcpClient.Close();
         }

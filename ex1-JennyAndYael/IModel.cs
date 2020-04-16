@@ -9,12 +9,14 @@ namespace ex1_JennyAndYael
 {
     public interface IModel : INotifyPropertyChanged
     {
-        // connection to the server
-        void connect();
-        void disconnect();
-        void start();
+        //This method used for connection to the server.
+        void Connect();
+        //This method used for disconnection to the server.
+        void Disconnect();
+        //This method used for starting the communication with the server.
+        void Start();
 
-        // data table properties
+        //These are the data table properties.
         string Indicated_heading_deg { set; get; }
         string Gps_indicated_vertical_speed { set; get; }
         string Gps_indicated_ground_speed_kt { set; get; }
@@ -24,11 +26,11 @@ namespace ex1_JennyAndYael
         string Attitude_indicator_internal_pitch_deg { set; get; }
         string Altimeter_indicated_altitude_ft { set; get; }
 
-        //map properties
+        //These are the map properties.
         double Latitude_deg { set; get; }
         double Longitude_deg { set; get; }
 
-        //map error property
+        //These are the map error property.
         string Error_map { get; }
     }
 }

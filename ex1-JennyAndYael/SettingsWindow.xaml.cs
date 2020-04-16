@@ -15,12 +15,13 @@ using System.Windows.Shapes;
 namespace ex1_JennyAndYael
 {
     /// <summary>
-    /// Interaction logic for InputWindow.xaml
+    /// Interaction logic for InputWindow.xaml.
     /// </summary>
     public partial class SettingsWindow : Window
     {
         private SettingsViewModel vm;
 
+        //This is the constructor that initialize the settings window componenet
         public SettingsWindow()
         {
             InitializeComponent();
@@ -28,6 +29,8 @@ namespace ex1_JennyAndYael
             vm = new SettingsViewModel(modelApp);
             this.DataContext = vm;
         }
+        //This method defines the logic when the user cliecked OK.
+        //It save the settings and open the next window.
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             if (vm.VM_Wrong_details == null)
@@ -38,11 +41,13 @@ namespace ex1_JennyAndYael
                 this.Close();
             }
         }
+        //This method defines the logic when the user cliecked Cancel.
+        //It close the window.
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-    
+        //This method defines the logic when the checkBox is clicked.
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             vm.ResetToDefaultSettings();

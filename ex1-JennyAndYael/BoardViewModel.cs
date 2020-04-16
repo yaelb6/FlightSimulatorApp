@@ -11,6 +11,8 @@ namespace ex1_JennyAndYael
     {
         private MyModel simulatorModel;
         public event PropertyChangedEventHandler PropertyChanged;
+
+        //This method defines the Board view model to be the given view model.
         public BoardViewModel(MyModel model)
         {
             this.simulatorModel = model;
@@ -19,9 +21,9 @@ namespace ex1_JennyAndYael
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
+        //This method is for notifying that the given propName is changed.
         public void NotifyPropertyChanged(string propName)
         {
-            //paul's example, if it doesn't work try like eli's example
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
         public string VM_Indicated_heading_deg { 

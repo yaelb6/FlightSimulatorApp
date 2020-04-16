@@ -13,7 +13,8 @@ namespace ex1_JennyAndYael
         private MyModel simulatorModel;
         public Location VM_location;
         public event PropertyChangedEventHandler PropertyChanged;
-        //constructor
+        
+        //This method is the constructor and defines the componenet of the map view model.
         public MapViewModel(MyModel model)
         {
             this.simulatorModel = model;
@@ -22,6 +23,7 @@ namespace ex1_JennyAndYael
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
+        //This method notify the propName changed.
         public void NotifyPropertyChanged(string propName) {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VM_Location"));
             VM_Location = new Location(VM_Latitude_deg, VM_Longitude_deg);
