@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
-using System.Net.Sockets;
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     class SettingsViewModel : INotifyPropertyChanged
     {
         private ISettingsModel model;
-        private IPAddress iPAddress;
-        private string error_msg = null;
+        private IPAddress ipAddress;
+        private string errorMsg = null;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public SettingsViewModel(ISettingsModel model)
@@ -27,14 +22,15 @@ namespace ex1_JennyAndYael
             get { return model.ServerIP; }
             set
             {
-                if (IPAddress.TryParse(value, out iPAddress) && iPAddress.ToString().Equals(value))
+                if (IPAddress.TryParse(value, out ipAddress) && ipAddress.ToString().Equals(value))
                 {
                     model.ServerIP = value;
                     NotifyPropertyChanged("ServerIP");
-                    VM_Wrong_details = null;
-                } else
+                    VmWrongDetails = null;
+                }
+                else
                 {
-                    VM_Wrong_details = "Wrong IP address";
+                    VmWrongDetails = "Wrong IP address";
                 }
             }
         }
@@ -45,26 +41,26 @@ namespace ex1_JennyAndYael
             {
                 if (!value.All(char.IsDigit))
                 {
-                    VM_Wrong_details = "Wrong port";
+                    VmWrongDetails = "Wrong port";
                 }
                 else
                 {
-                    VM_Wrong_details = null;
+                    VmWrongDetails = null;
                     model.ServerPort = value;
                     NotifyPropertyChanged("ServerPort");
                 }
             }
         }
-        public string VM_Wrong_details
+        public string VmWrongDetails
         {
             get
             {
-                return error_msg;
-            } 
+                return errorMsg;
+            }
             set
             {
-                error_msg = value;
-                NotifyPropertyChanged("VM_Wrong_details");
+                errorMsg = value;
+                NotifyPropertyChanged("VmWrongDetails");
             }
         }
         public void NotifyPropertyChanged(string propName)
@@ -77,7 +73,6 @@ namespace ex1_JennyAndYael
         }
         public void ResetToDefaultSettings()
         {
-
             model.ResetSettings();
         }
 

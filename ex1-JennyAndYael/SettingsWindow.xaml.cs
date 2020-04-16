@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     /// <summary>
     /// Interaction logic for InputWindow.xaml
@@ -28,9 +28,9 @@ namespace ex1_JennyAndYael
             vm = new SettingsViewModel(modelApp);
             this.DataContext = vm;
         }
-        private void btnOK_Click(object sender, RoutedEventArgs e)
+        private void ButtonOkClick(object sender, RoutedEventArgs e)
         {
-            if (vm.VM_Wrong_details == null)
+            if (vm.VmWrongDetails == null)
             {
                 vm.SaveSettings();
                 MainWindow win = new MainWindow();
@@ -38,22 +38,22 @@ namespace ex1_JennyAndYael
                 this.Close();
             }
         }
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
     
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void CheckBoxChecked(object sender, RoutedEventArgs e)
         {
             vm.ResetToDefaultSettings();
         }
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void CheckBoxUnchecked(object sender, RoutedEventArgs e)
         {
             
         }
 
-        private void txtPort_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextPortTextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

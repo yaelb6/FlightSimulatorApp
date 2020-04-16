@@ -1,11 +1,10 @@
-﻿<UserControl x:Class="ex1_JennyAndYael.View.Controls.JoyAndSlider"
+﻿<UserControl x:Class="FlightSimulator.View.Controls.JoyAndSlider"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:JoyS ="clr-namespace:ex1_JennyAndYael.View.Controls"
-      
-      xmlns:local="clr-namespace:ex1_JennyAndYael.View.Controls"
+      xmlns:JoyS ="clr-namespace:FlightSimulator.View.Controls"
+      xmlns:local="clr-namespace:FlightSimulator.View.Controls"
       mc:Ignorable="d" Height="294" Width="387.2">
 
     <Grid   >
@@ -27,23 +26,23 @@
         </Viewbox>
 
         <Grid Margin="99,18.2,41.2,0" Grid.Row="2" Height="25" VerticalAlignment="Top" Grid.Column="1">
-            <Slider x:Name="T_Copy1" 
+            <Slider x:Name="TCopy1" 
                 Minimum="0" 
                 Maximum="1"
                 TickFrequency="5"
                 Orientation="Horizontal" RenderTransformOrigin="0.521,0.771" Margin="-34,-18,-20,16"
-                    Value="{Binding VM_Throttle}"/>
+                    Value="{Binding VmThrottle}"/>
             <Label Content="Throttle" HorizontalAlignment="Left" Margin="-41,0,0,0" VerticalAlignment="Top" Width="56" Height="25"/>
-            <Label x:Name="displayLabel1" Content="{Binding Source={x:Reference T_Copy1},Path=Value}" Height="26" Margin="33,0,-29,-1" />
+            <Label x:Name="displayLabel1" Content="{Binding Source={x:Reference TCopy1},Path=Value}" Height="26" Margin="33,0,-29,-1" />
         </Grid>
 
         <Grid Grid.Row="0" Height="34" VerticalAlignment="Top" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,7.2,0" Grid.RowSpan="2">
-            <Slider x:Name="T_Copy2" 
+            <Slider x:Name="TCopy2" 
                 Minimum="-1" 
                 Maximum="1"
                 TickFrequency="5"
                 Orientation="Horizontal" RenderTransformOrigin="0.521,0.771" Margin="-21,93,0,-84" HorizontalAlignment="Left" Width="192"
-                    Value="{Binding VM_Aileron}" ValueChanged="T_Copy2_ValueChanged">
+                    Value="{Binding VmAileron}" ValueChanged="TCopy2ValueChanged">
                 <Slider.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -54,17 +53,12 @@
                 </Slider.RenderTransform>
             </Slider>
             <Label Content="Aileron" HorizontalAlignment="Left" Margin="4,98,0,-90" VerticalAlignment="Top" Width="48" Height="26"/>
-            <Label x:Name="displayLabel" Content="{Binding Source={x:Reference T_Copy2},Path=Value}" Margin="3,121,250,-111"/>
+            <Label x:Name="displayLabel" Content="{Binding Source={x:Reference TCopy2},Path=Value}" Margin="3,121,250,-111"/>
         </Grid>
-
-
         <Label Content="Rudder" Grid.Column="1"  VerticalAlignment="Top" Height="27" Margin="90,1,89.2,0"/>
-        <Label x:Name="RudderValue" Grid.Column="1" Margin="143,0,2.2,211.8" Content="{Binding VM_rudder}" Grid.RowSpan="2" />
+        <Label x:Name="RudderValue" Grid.Column="1" Margin="143,0,2.2,211.8" Content="{Binding VmRudder}" Grid.RowSpan="2" />
 
         <Label Content="Elevator" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="1.8,78,12.4,0"/>
-        <Label Content="{Binding VM_elevator}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="2.8,100,5,0"/>
-
-
-
+        <Label Content="{Binding VmElevator}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="2.8,100,5,0"/>
     </Grid>
 </UserControl>

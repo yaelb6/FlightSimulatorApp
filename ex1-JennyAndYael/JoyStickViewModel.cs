@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     public class JoyStickViewModel : INotifyPropertyChanged
     {
@@ -20,45 +16,45 @@ namespace ex1_JennyAndYael
         {
             this.simulatorModel = model;
         }
-        public void joyStickMoved(double rudder, double elevator)
+        public void JoyStickMoved(double rudder, double elevator)
         {
             double x, y;
             //Normalize 
             x = 2 * ((rudder - (-140.1)) / (140.1 - (-140.1))) - 1;
             y = 2 * ((elevator - (-140.1)) / (140.1 - (-140.1))) - 1;
             //simulatorModel.updateRudderAndElevator(rudder, elevator);
-            simulatorModel.updateRudderAndElevator(x, y);
+            simulatorModel.UpdateRudderAndElevator(x, y);
             this.rudder = x;
             this.elevator = y;
-            NotifyPropertyChanged("VM_" + "rudder");
-            NotifyPropertyChanged("VM_" + "elevator");
+            NotifyPropertyChanged("Vm" + "Rudder");
+            NotifyPropertyChanged("Vm" + "Elevator");
         }
         public void NotifyPropertyChanged(string propName)
         {
             //paul's example, if it doesn't work try like eli's example
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
-        public string VM_Throttle
+        public string VmThrottle
         {
             get
             {
-                    if (this.throttle.Length > 5)
-                    {
-                        return this.throttle.Substring(0, 5);
-                    }
-                    else
-                    {
-                        return this.throttle;
-                    }
+                if (this.throttle.Length > 5)
+                {
+                    return this.throttle.Substring(0, 5);
+                }
+                else
+                {
+                    return this.throttle;
+                }
             }
             set
             {
                 this.throttle = value;
-                simulatorModel.updateThrottle(Double.Parse(throttle));
+                simulatorModel.UpdateThrottle(Double.Parse(throttle));
 
             }
         }
-        public string VM_Aileron
+        public string VmAileron
         {
             get
             {
@@ -70,15 +66,15 @@ namespace ex1_JennyAndYael
                 {
                     return this.aileron;
                 }
-                
+
             }
             set
             {
                 aileron = value;
-                simulatorModel.updateAileron(Double.Parse(aileron));
+                simulatorModel.UpdateAileron(Double.Parse(aileron));
             }
         }
-        public string VM_rudder
+        public string VmRudder
         {
             get
             {
@@ -92,7 +88,7 @@ namespace ex1_JennyAndYael
                 }
             }
         }
-        public string VM_elevator
+        public string VmElevator
         {
             get
             {

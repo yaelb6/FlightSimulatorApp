@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     class ApplicationSettingsModel : ISettingsModel
     {
@@ -14,14 +14,17 @@ namespace ex1_JennyAndYael
         public string ServerIP
         {
             get { return Properties.Settings.Default.ServerIPValue; }
-            set {
+            set
+            {
                 Properties.Settings.Default.ServerIPValue = value;
             }
         }
         public string ServerPort
         {
             get { return Properties.Settings.Default.PortValue; }
-            set { Properties.Settings.Default.PortValue = value;
+            set
+            {
+                Properties.Settings.Default.PortValue = value;
             }
         }
 
