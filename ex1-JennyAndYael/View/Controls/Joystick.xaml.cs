@@ -60,7 +60,7 @@ namespace FlightSimulator.View.Controls
             }
         }
         //This function dbring the mouse position to the starting point.
-        private void ellipse_MouseLeave(object sender, MouseEventArgs e)
+        private void EllipseMouseLeave(object sender, MouseEventArgs e)
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;

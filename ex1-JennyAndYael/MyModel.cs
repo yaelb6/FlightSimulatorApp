@@ -372,6 +372,7 @@ namespace FlightSimulator
                         {
                             Heading = telnetClient.Get(message).Substring(0, 5);
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -392,6 +393,7 @@ namespace FlightSimulator
                         {
                             VerticalSpeed = telnetClient.Get(message).Substring(0, 5);
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -413,6 +415,7 @@ namespace FlightSimulator
                         {
                             GroundSpeed = telnetClient.Get(message).Substring(0, 5);
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -434,6 +437,7 @@ namespace FlightSimulator
                         {
                             Airspeed = telnetClient.Get(message).Substring(0, 5);
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -455,6 +459,7 @@ namespace FlightSimulator
                         {
                             GpsAltitude = telnetClient.Get(message).Substring(0, 5);
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -476,6 +481,7 @@ namespace FlightSimulator
                         {
                             AttitudeRoll = telnetClient.Get(message).Substring(0, 5);
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -497,6 +503,7 @@ namespace FlightSimulator
                         {
                             AttitudePitch = telnetClient.Get(message).Substring(0, 5);
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -518,6 +525,7 @@ namespace FlightSimulator
                         {
                             AltimeterAltitude = telnetClient.Get(message).Substring(0, 5);
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -533,6 +541,7 @@ namespace FlightSimulator
                         {
                             DisconnectedServer = "Error: Server was disconnected";
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -546,6 +555,7 @@ namespace FlightSimulator
                         {
                             DisconnectedServer = "Error: Server was disconnected";
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -559,6 +569,7 @@ namespace FlightSimulator
                         {
                             DisconnectedServer = "Error: Server was disconnected";
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -572,6 +583,7 @@ namespace FlightSimulator
                         {
                             DisconnectedServer = "Error: Server was disconnected";
                         }
+                        SlowServer = null;
                     }
                     catch (Exception)
                     {
@@ -601,6 +613,7 @@ namespace FlightSimulator
                                 continue;
                             }
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
@@ -628,6 +641,7 @@ namespace FlightSimulator
                                 continue;
                             }
                         }
+                        SlowServer = null;
                     }
                     catch (IOException)
                     {
