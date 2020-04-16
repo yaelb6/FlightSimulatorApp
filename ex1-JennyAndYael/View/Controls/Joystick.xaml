@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ex1_JennyAndYael.View.Controls.Joystick"
+﻿<UserControl x:Class="FlightSimulator.View.Controls.Joystick"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
              d:DesignHeight="350" d:DesignWidth="360">
     <Grid>
         <Canvas  x:Name="Base" Margin="0" Width="340" Height="340">
-            <Ellipse MouseLeave="ellipse_MouseLeave" HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
+            <Ellipse MouseLeave="EllipseMouseLeave" HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
                 <Ellipse.Fill>
                     <RadialGradientBrush>
                         <GradientStop Color="#FF2C2A2A" Offset="1" />
@@ -47,7 +47,7 @@
                 </Path.RenderTransform>
             </Path>
 
-            <Canvas  x:Name="Knob" VerticalAlignment="Top" HorizontalAlignment="Left" Width="0" Height="0" RenderTransformOrigin="0.5,0.5" Canvas.Left="125" Canvas.Top="125" MouseUp="Knob_MouseUp" MouseDown="Knob_MouseDown" MouseMove="Knob_MouseMove">
+            <Canvas  x:Name="Knob" VerticalAlignment="Top" HorizontalAlignment="Left" Width="0" Height="0" RenderTransformOrigin="0.5,0.5" Canvas.Left="125" Canvas.Top="125" MouseUp="KnobMouseUp" MouseDown="KnobMouseDown" MouseMove="KnobMouseMove">
                 <!--<Ellipse x:Name="Shadow" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="86" Fill="#52131212" Canvas.Left="22" Canvas.Top="18" />-->
                 <Ellipse x:Name="KnobBase" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,0.5" Canvas.Top="1">
                     <Ellipse.Fill>
@@ -117,7 +117,7 @@
                 </Canvas.RenderTransform>
                 <Canvas.Resources>
 
-                    <Storyboard x:Key="CenterKnob" Name="centerKnob" Completed="centerKnob_Completed">
+                    <Storyboard x:Key="CenterKnob" Name="centerKnob" Completed="CenterKnobCompleted">
 
                         <DoubleAnimation Storyboard.TargetName="knobPosition"
                              Storyboard.TargetProperty="X" To="0" Duration="0:0:0.2">

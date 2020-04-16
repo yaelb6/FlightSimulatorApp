@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{37C05897-7C08-423B-A81B-CE6A3F4D4C63}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ex1_JennyAndYael</RootNamespace>
+    <RootNamespace>FlightSimulator</RootNamespace>
     <AssemblyName>ex1-JennyAndYael</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

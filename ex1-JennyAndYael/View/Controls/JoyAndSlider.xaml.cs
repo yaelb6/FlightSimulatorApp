@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace ex1_JennyAndYael.View.Controls
+namespace FlightSimulator.View.Controls
 {
     /// <summary>
     /// Interaction logic for JoyAndSlider.xaml
@@ -24,12 +12,12 @@ namespace ex1_JennyAndYael.View.Controls
         {
             InitializeComponent();
         }
-        public void setVmJoyS(JoyStickViewModel joyvm)
+        public void SetVmJoyStick(JoyStickViewModel joyvm)
         {
-            JoyStickElement.setVm(joyvm);
+            JoyStickElement.SetVm(joyvm);
         }
 
-        private void T_Copy2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void TCopy2ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
         }

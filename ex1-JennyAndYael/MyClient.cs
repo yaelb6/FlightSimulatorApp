@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net.Sockets;
-using System.Configuration;
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     public class MyClient
     {
@@ -22,13 +17,13 @@ namespace ex1_JennyAndYael
             connectionPort = Convert.ToInt32(Properties.Settings.Default.PortValue);
 
         }
-        public void connect()
+        public void Connect()
         {
             tcpClient = new TcpClient(connectionIp, connectionPort);
             tcpClient.ReceiveTimeout = 10000;
         }
 
-        public string set(string message)
+        public string Set(string message)
         {
             // Translate the passed message into ASCII and store it as a Byte array.
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
@@ -36,7 +31,8 @@ namespace ex1_JennyAndYael
             try
             {
                 stream = tcpClient.GetStream();
-            } catch (InvalidOperationException e)
+            }
+            catch (InvalidOperationException)
             {
                 return "disconnected";
             }
@@ -49,20 +45,22 @@ namespace ex1_JennyAndYael
                 Int32 bytes = stream.Read(data, 0, data.Length);
                 responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
                 return responseData;
-            } else
+            }
+            else
             {
                 return "disconnected";
             }
         }
 
-        public string get(string message)
+        public string Get(string message)
         {
             // Receive the TcpServer.response.
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
             try
             {
                 stream = tcpClient.GetStream();
-            } catch (InvalidOperationException e)
+            }
+            catch (InvalidOperationException)
             {
                 return "disconnected";
             }
@@ -75,13 +73,14 @@ namespace ex1_JennyAndYael
                 Int32 bytes = stream.Read(data, 0, data.Length);
                 responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
                 return responseData;
-            } else
+            }
+            else
             {
                 return "disconnected";
             }
 
         }
-            public void disconnect()
+        public void Disconnect()
         {
             tcpClient.Close();
         }

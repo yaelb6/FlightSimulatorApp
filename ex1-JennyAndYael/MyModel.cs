@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.IO;
 
-namespace ex1_JennyAndYael
+namespace FlightSimulator
 {
     public class MyModel : IModel
     {
@@ -17,14 +13,14 @@ namespace ex1_JennyAndYael
         MyClient telnetClient;
         volatile Boolean stop;
         // 8 fields for data table
-        private string indicated_heading_deg;
-        private string gps_indicated_vertical_speed;
-        private string gps_indicated_ground_speed_kt;
-        private string airspeed_indicator_indicated_speed_kt;
-        private string gps_indicated_altitude_ft;
-        private string attitude_indicator_internal_roll_deg;
-        private string attitude_indicator_internal_pitch_deg;
-        private string altimeter_indicated_altitude_ft;
+        private string heading;
+        private string verticalSpeed;
+        private string groundSpeed;
+        private string airspeed;
+        private string gpsAltitude;
+        private string attitudeRoll;
+        private string attitudePitch;
+        private string altimeterAltitude;
 
         //4 fields for joystick
         private double rudder;
@@ -36,25 +32,25 @@ namespace ex1_JennyAndYael
         private double latitude;
         private double longitude;
 
-        private string error_map = null;
-        private string slow_server = null;
-        private string server_disconnected = null;
-        private string error_dashboard = null;
+        private string errorMap = null;
+        private string slowServer = null;
+        private string serverDisconnected = null;
+        private string errorDashboard = null;
 
-        public void setStop(bool val)
+        public void SetStop(bool val)
         {
             this.stop = val;
         }
-        public void updateRudderAndElevator (double rudder, double elevator)
+        public void UpdateRudderAndElevator(double rudder, double elevator)
         {
             this.rudder = rudder;
             this.elevator = elevator;
         }
-        public void updateAileron (double aileron)
+        public void UpdateAileron(double aileron)
         {
             this.aileron = aileron;
         }
-        public void updateThrottle (double throttle)
+        public void UpdateThrottle(double throttle)
         {
             this.throttle = throttle;
         }
@@ -63,167 +59,168 @@ namespace ex1_JennyAndYael
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
-        public string Indicated_heading_deg
+        public string Heading
         {
             get
             {
-                return indicated_heading_deg;
+                return heading;
             }
             set
             {
                 if (value.Equals("ERR"))
                 {
-                    Error_dashboard = "Error in dashboard values";
-                } else
-                {
-                    Error_dashboard = null;
+                    ErrorDashboard = "Error in dashboard values";
                 }
-                indicated_heading_deg = value;
-                NotifyPropertyChanged("Indicated_heading_deg");
+                else
+                {
+                    ErrorDashboard = null;
+                }
+                heading = value;
+                NotifyPropertyChanged("Heading");
             }
 
         }
-        public string Gps_indicated_vertical_speed
+        public string VerticalSpeed
         {
             get
             {
-                return gps_indicated_vertical_speed;
+                return verticalSpeed;
             }
             set
             {
                 if (value.Equals("ERR"))
                 {
-                    Error_dashboard = "Error in dashboard values";
+                    ErrorDashboard = "Error in dashboard values";
                 }
                 else
                 {
-                    Error_dashboard = null;
+                    ErrorDashboard = null;
                 }
-                gps_indicated_vertical_speed = value;
-                NotifyPropertyChanged("Gps_indicated_vertical_speed");
+                verticalSpeed = value;
+                NotifyPropertyChanged("VerticalSpeed");
             }
         }
-        public string Gps_indicated_ground_speed_kt
+        public string GroundSpeed
         {
             get
             {
-                return gps_indicated_ground_speed_kt;
+                return groundSpeed;
             }
             set
             {
                 if (value.Equals("ERR"))
                 {
-                    Error_dashboard = "Error in dashboard values";
+                    ErrorDashboard = "Error in dashboard values";
                 }
                 else
                 {
-                    Error_dashboard = null;
+                    ErrorDashboard = null;
                 }
-                gps_indicated_ground_speed_kt = value;
-                NotifyPropertyChanged("Gps_indicated_ground_speed_kt");
+                groundSpeed = value;
+                NotifyPropertyChanged("GroundSpeed");
             }
         }
-        public string Airspeed_indicator_indicated_speed_kt
+        public string Airspeed
         {
             get
             {
-                return airspeed_indicator_indicated_speed_kt;
+                return airspeed;
             }
             set
             {
                 if (value.Equals("ERR"))
                 {
-                    Error_dashboard = "Error in dashboard values";
+                    ErrorDashboard = "Error in dashboard values";
                 }
                 else
                 {
-                    Error_dashboard = null;
+                    ErrorDashboard = null;
                 }
-                airspeed_indicator_indicated_speed_kt = value;
-                NotifyPropertyChanged("Airspeed_indicator_indicated_speed_kt");
+                airspeed = value;
+                NotifyPropertyChanged("Airspeed");
             }
         }
-        public string Gps_indicated_altitude_ft
+        public string GpsAltitude
         {
             get
             {
-                return gps_indicated_altitude_ft;
+                return gpsAltitude;
             }
             set
             {
                 if (value.Equals("ERR"))
                 {
-                    Error_dashboard = "Error in dashboard values";
+                    ErrorDashboard = "Error in dashboard values";
                 }
                 else
                 {
-                    Error_dashboard = null;
+                    ErrorDashboard = null;
                 }
-                gps_indicated_altitude_ft = value;
-                NotifyPropertyChanged("Gps_indicated_altitude_ft");
+                gpsAltitude = value;
+                NotifyPropertyChanged("GpsAltitude");
             }
         }
-        public string Attitude_indicator_internal_roll_deg
+        public string AttitudeRoll
         {
             get
             {
-                return attitude_indicator_internal_roll_deg;
+                return attitudeRoll;
             }
             set
             {
                 if (value.Equals("ERR"))
                 {
-                    Error_dashboard = "Error in dashboard values";
+                    ErrorDashboard = "Error in dashboard values";
                 }
                 else
                 {
-                    Error_dashboard = null;
+                    ErrorDashboard = null;
                 }
-                attitude_indicator_internal_roll_deg = value;
-                NotifyPropertyChanged("Attitude_indicator_internal_roll_deg");
+                attitudeRoll = value;
+                NotifyPropertyChanged("AttitudeRoll");
             }
         }
-        public string Attitude_indicator_internal_pitch_deg
+        public string AttitudePitch
         {
             get
             {
-                return attitude_indicator_internal_pitch_deg;
+                return attitudePitch;
             }
             set
             {
                 if (value.Equals("ERR"))
                 {
-                    Error_dashboard = "Error in dashboard values";
+                    ErrorDashboard = "Error in dashboard values";
                 }
                 else
                 {
-                    Error_dashboard = null;
+                    ErrorDashboard = null;
                 }
-                attitude_indicator_internal_pitch_deg = value;
-                NotifyPropertyChanged("Attitude_indicator_internal_pitch_deg");
+                attitudePitch = value;
+                NotifyPropertyChanged("AttitudePitch");
             }
         }
-        public string Altimeter_indicated_altitude_ft
+        public string AltimeterAltitude
         {
             get
             {
-                return altimeter_indicated_altitude_ft;
+                return altimeterAltitude;
             }
             set
             {
                 if (value.Equals("ERR"))
                 {
-                    Error_dashboard = "Error in dashboard values";
+                    ErrorDashboard = "Error in dashboard values";
                 }
                 else
                 {
-                    Error_dashboard = null;
+                    ErrorDashboard = null;
                 }
-                altimeter_indicated_altitude_ft = value;
-                NotifyPropertyChanged("Altimeter_indicated_altitude_ft");
+                altimeterAltitude = value;
+                NotifyPropertyChanged("AltimeterAltitude");
             }
         }
-        public double Latitude_deg
+        public double Latitude
         {
             get
             {
@@ -236,21 +233,23 @@ namespace ex1_JennyAndYael
                     if (value > 85)
                     {
                         value = 85;
-                    } else
+                    }
+                    else
                     {
                         value = -85;
-                        
+
                     }
-                    Error_map = "Error : Invalid map coordinates";
-                } 
-                else if ((longitude < 180) && (longitude > -180)) {
-                    Error_map = null;
+                    ErrorMap = "Error : Invalid map coordinates";
+                }
+                else if ((longitude < 180) && (longitude > -180))
+                {
+                    ErrorMap = null;
                 }
                 latitude = value;
-                NotifyPropertyChanged("Latitude_deg");
+                NotifyPropertyChanged("Latitude");
             }
         }
-        public double Longitude_deg
+        public double Longitude
         {
             get
             {
@@ -268,63 +267,63 @@ namespace ex1_JennyAndYael
                     {
                         value = -180;
                     }
-                    Error_map = "Error : Invalid map coordinates";
+                    ErrorMap = "Error : Invalid map coordinates";
                 }
                 else if ((latitude < 85) && (latitude > -85))
                 {
-                    Error_map = null;
+                    ErrorMap = null;
                 }
                 longitude = value;
-                NotifyPropertyChanged("Longitude_deg");
+                NotifyPropertyChanged("Longitude");
             }
         }
-        public string Error_map
+        public string ErrorMap
         {
             get
             {
-                return error_map;
+                return errorMap;
             }
             set
             {
-                error_map = value;
-                NotifyPropertyChanged("Error_map");
+                errorMap = value;
+                NotifyPropertyChanged("ErrorMap");
             }
         }
-        public string Error_dashboard
+        public string ErrorDashboard
         {
             get
             {
-                return error_dashboard;
+                return errorDashboard;
             }
             set
             {
-                error_dashboard = value;
-                NotifyPropertyChanged("Error_dashboard");
+                errorDashboard = value;
+                NotifyPropertyChanged("ErrorDashboard");
             }
         }
-        public string Slow_server
+        public string SlowServer
         {
             get
             {
-                return slow_server;
+                return slowServer;
             }
             set
             {
-                slow_server = value;
-                NotifyPropertyChanged("Slow_server");
+                slowServer = value;
+                NotifyPropertyChanged("SlowServer");
             }
         }
-        public string Disconnected_server
+        public string DisconnectedServer
         {
             get
             {
-                return server_disconnected;
+                return serverDisconnected;
             }
             set
             {
-                server_disconnected = value;
-                Slow_server = null;
-                NotifyPropertyChanged("Disconnected_server");
+                serverDisconnected = value;
+                SlowServer = null;
+                NotifyPropertyChanged("DisconnectedServer");
             }
         }
         public MyModel(MyClient telnetClient)
@@ -333,20 +332,20 @@ namespace ex1_JennyAndYael
             stop = false;
         }
 
-        public void connect()
+        public void Connect()
         {
-            telnetClient.connect();
+            telnetClient.Connect();
         }
-        public void disconnect()
+        public void Disconnect()
         {
             stop = true;
-            telnetClient.disconnect();
+            telnetClient.Disconnect();
         }
-        public void start()
+        public void Start()
         {
             new Thread(delegate ()
             {
-                connect();
+                Connect();
                 while (!stop)
                 {
                     string message;
@@ -355,239 +354,241 @@ namespace ex1_JennyAndYael
                     message = "get /instrumentation/heading-indicator/indicated-heading-deg\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Indicated_heading_deg = "ERR";
-                        } 
-                        else if (telnetClient.get(message).Equals("disconnected")) {
-                            Disconnected_server = "Error: Server was disconnected";
+                            Heading = "ERR";
+                        }
+                        else if (telnetClient.Get(message).Equals("disconnected"))
+                        {
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            Indicated_heading_deg = telnetClient.get(message).Substring(0, 5);
+                            Heading = telnetClient.Get(message).Substring(0, 5);
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
-                    message = "get  /instrumentation/gps/indicated-vertical-speed\n";
+                    message = "get /instrumentation/gps/indicated-vertical-speed\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Gps_indicated_vertical_speed = "ERR";
+                            VerticalSpeed = "ERR";
                         }
-                        else if (telnetClient.get(message).Equals("disconnected"))
+                        else if (telnetClient.Get(message).Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            Gps_indicated_vertical_speed = telnetClient.get(message).Substring(0, 5);
+                            VerticalSpeed = telnetClient.Get(message).Substring(0, 5);
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
 
                     message = "get /instrumentation/gps/indicated-ground-speed-kt\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Gps_indicated_ground_speed_kt = "ERR";
+                            GroundSpeed = "ERR";
                         }
-                        else if (telnetClient.get(message).Equals("disconnected"))
+                        else if (telnetClient.Get(message).Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            Gps_indicated_ground_speed_kt = telnetClient.get(message).Substring(0, 5);
+                            GroundSpeed = telnetClient.Get(message).Substring(0, 5);
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
 
                     message = "get /instrumentation/airspeed-indicator/indicated-speed-kt\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Airspeed_indicator_indicated_speed_kt = "ERR";
+                            Airspeed = "ERR";
                         }
-                        else if (telnetClient.get(message).Equals("disconnected"))
+                        else if (telnetClient.Get(message).Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            Airspeed_indicator_indicated_speed_kt = telnetClient.get(message).Substring(0, 5);
+                            Airspeed = telnetClient.Get(message).Substring(0, 5);
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
 
                     message = "get /instrumentation/gps/indicated-altitude-ft\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Gps_indicated_altitude_ft = "ERR";
+                            GpsAltitude = "ERR";
                         }
-                        else if (telnetClient.get(message).Equals("disconnected"))
+                        else if (telnetClient.Get(message).Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            Gps_indicated_altitude_ft = telnetClient.get(message).Substring(0, 5);
+                            GpsAltitude = telnetClient.Get(message).Substring(0, 5);
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
 
                     message = "get /instrumentation/attitude-indicator/internal-roll-deg\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Attitude_indicator_internal_roll_deg = "ERR";
+                            AttitudeRoll = "ERR";
                         }
-                        else if (telnetClient.get(message).Equals("disconnected"))
+                        else if (telnetClient.Get(message).Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            Attitude_indicator_internal_roll_deg = telnetClient.get(message).Substring(0, 5);
+                            AttitudeRoll = telnetClient.Get(message).Substring(0, 5);
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
 
                     message = "get /instrumentation/attitude-indicator/internal-pitch-deg\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Attitude_indicator_internal_pitch_deg = "ERR";
+                            AttitudePitch = "ERR";
                         }
-                        else if (telnetClient.get(message).Equals("disconnected"))
+                        else if (telnetClient.Get(message).Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            Attitude_indicator_internal_pitch_deg = telnetClient.get(message).Substring(0, 5);
+                            AttitudePitch = telnetClient.Get(message).Substring(0, 5);
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
 
                     message = "get /instrumentation/altimeter/indicated-altitude-ft\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Altimeter_indicated_altitude_ft = "ERR";
+                            AltimeterAltitude = "ERR";
                         }
-                        else if (telnetClient.get(message).Equals("disconnected"))
+                        else if (telnetClient.Get(message).Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            Altimeter_indicated_altitude_ft = telnetClient.get(message).Substring(0, 5);
+                            AltimeterAltitude = telnetClient.Get(message).Substring(0, 5);
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
 
                     //set 4 properties from joystick
                     message = "set /controls/flight/rudder " + this.rudder + "\n";
                     try
                     {
-                        responseData = telnetClient.set(message);
+                        responseData = telnetClient.Set(message);
                         if (responseData.Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
                     message = "set /controls/flight/throttle " + this.throttle + "\n";
                     try
                     {
-                        responseData = telnetClient.set(message);
+                        responseData = telnetClient.Set(message);
                         if (responseData.Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
-                    } catch (IOException e)
+                    }
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
                     message = "set /controls/flight/aileron " + this.aileron + "\n";
                     try
                     {
-                        responseData = telnetClient.set(message);
+                        responseData = telnetClient.Set(message);
                         if (responseData.Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
                     message = "set /controls/flight/elevator " + this.elevator + "\n";
                     try
                     {
-                        responseData = telnetClient.set(message);
+                        responseData = telnetClient.Set(message);
                         if (responseData.Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
 
                     //get 2 properties for map
                     message = "get /position/latitude-deg\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Error_map = "Error : ERR in map coordinates";
+                            ErrorMap = "Error : ERR in map coordinates";
                         }
-                        else if (telnetClient.get(message).Equals("disconnected"))
+                        else if (telnetClient.Get(message).Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            if (double.TryParse(telnetClient.get(message), out latitude))
+                            if (double.TryParse(telnetClient.Get(message), out latitude))
                             {
-                                Latitude_deg = Double.Parse(telnetClient.get(message));
+                                Latitude = Double.Parse(telnetClient.Get(message));
                             }
                             else
                             {
@@ -595,27 +596,26 @@ namespace ex1_JennyAndYael
                             }
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
-
                     message = "get /position/longitude-deg\n";
                     try
                     {
-                        if (telnetClient.get(message).Equals("ERR\n"))
+                        if (telnetClient.Get(message).Equals("ERR\n"))
                         {
-                            Error_map = "Error : ERR in map coordinates";
+                            ErrorMap = "Error : ERR in map coordinates";
                         }
-                        else if (telnetClient.get(message).Equals("disconnected"))
+                        else if (telnetClient.Get(message).Equals("disconnected"))
                         {
-                            Disconnected_server = "Error: Server was disconnected";
+                            DisconnectedServer = "Error: Server was disconnected";
                         }
                         else
                         {
-                            if (double.TryParse(telnetClient.get(message), out longitude))
+                            if (double.TryParse(telnetClient.Get(message), out longitude))
                             {
-                                Longitude_deg = Double.Parse(telnetClient.get(message));
+                                Longitude = Double.Parse(telnetClient.Get(message));
                             }
                             else
                             {
@@ -623,12 +623,10 @@ namespace ex1_JennyAndYael
                             }
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
-                        Slow_server = "Error: Server is too slow";
+                        SlowServer = "Error: Server is too slow";
                     }
-
-
                     // the same for the other sensors properties
                     Thread.Sleep(250);// read the data in 4Hz
                 }

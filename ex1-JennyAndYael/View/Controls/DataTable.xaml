@@ -1,19 +1,19 @@
-﻿<UserControl x:Class="ex1_JennyAndYael.View.Controls.DataTable"
+﻿<UserControl x:Class="FlightSimulator.View.Controls.DataTable"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ex1_JennyAndYael.View.Controls"
+             xmlns:local="clr-namespace:FlightSimulator.View.Controls"
              mc:Ignorable="d" Height="256" Width="684.8" >
     <FlowDocument>
         <Paragraph LineHeight="5">
-            <TextBlock Foreground="Red" Text="{Binding VM_Error_map, Mode=OneWay}">
+            <TextBlock Foreground="Red" Text="{Binding VmErrorMap, Mode=OneWay}">
             </TextBlock>
-            <TextBlock Foreground="Red" Text="{Binding VM_Error_dashboard, Mode=OneWay}">
+            <TextBlock Foreground="Red" Text="{Binding VmErrorDashboard, Mode=OneWay}">
             </TextBlock>
-            <TextBlock Foreground="Red" Text="{Binding VM_Slow_server, Mode=OneWay}">
+            <TextBlock Foreground="Red" Text="{Binding VmSlowServer, Mode=OneWay}">
             </TextBlock>
-            <TextBlock Foreground="Red" Text="{Binding VM_Disconnected_server, Mode=OneWay}">
+            <TextBlock Foreground="Red" Text="{Binding VmDisconnectedServer, Mode=OneWay}">
             </TextBlock>
         </Paragraph>
         <Table x:Name="simulatorData">
@@ -36,7 +36,7 @@
                     </TableCell>
                     <TableCell>
                         <Paragraph>
-                            <TextBlock MaxWidth="100" Text="{Binding VM_Indicated_heading_deg}"/>
+                            <TextBlock MaxWidth="100" Text="{Binding VmHeading}"/>
                         </Paragraph>
                     </TableCell>
                 </TableRow>
@@ -46,7 +46,7 @@
                     </TableCell>
                     <TableCell>
                         <Paragraph>
-                            <TextBlock Width="150" Text="{Binding VM_Gps_indicated_vertical_speed}"/>
+                            <TextBlock Width="150" Text="{Binding VmVerticalSpeed}"/>
                         </Paragraph>
                     </TableCell>
                 </TableRow>
@@ -56,7 +56,7 @@
                     </TableCell>
                     <TableCell>
                         <Paragraph>
-                            <TextBlock Width="150" Text="{Binding VM_Gps_indicated_ground_speed_kt}"/>
+                            <TextBlock Width="150" Text="{Binding VmGroundSpeed}"/>
                         </Paragraph>
                     </TableCell>
                 </TableRow>
@@ -66,7 +66,7 @@
                     </TableCell>
                     <TableCell>
                         <Paragraph>
-                            <TextBlock Width="150" Text="{Binding VM_Airspeed_indicator_indicated_speed_kt}"/>
+                            <TextBlock Width="150" Text="{Binding VmAirspeed}"/>
                         </Paragraph>
                     </TableCell>
                 </TableRow>
@@ -76,7 +76,7 @@
                     </TableCell>
                     <TableCell>
                         <Paragraph>
-                            <TextBlock Width="150" Text="{Binding VM_Gps_indicated_altitude_ft}"/>
+                            <TextBlock Width="150" Text="{Binding VmGpsAltitude}"/>
                         </Paragraph>
                     </TableCell>
                 </TableRow>
@@ -86,7 +86,7 @@
                     </TableCell>
                     <TableCell>
                         <Paragraph>
-                            <TextBlock Width="150" Text="{Binding VM_Attitude_indicator_internal_roll_deg}"/>
+                            <TextBlock Width="150" Text="{Binding VmAttitudeRoll}"/>
                         </Paragraph>
                     </TableCell>
                 </TableRow>
@@ -96,7 +96,7 @@
                     </TableCell>
                     <TableCell>
                         <Paragraph>
-                            <TextBlock Width="150" Text="{Binding VM_Attitude_indicator_internal_pitch_deg}"/>
+                            <TextBlock Width="150" Text="{Binding VmAttitudePitch}"/>
                         </Paragraph>
                     </TableCell>
                 </TableRow>
@@ -106,7 +106,7 @@
                     </TableCell>
                     <TableCell>
                         <Paragraph>
-                            <TextBlock Width="150" Text="{Binding VM_Altimeter_indicated_altitude_ft}"/>
+                            <TextBlock Width="150" Text="{Binding VmAltimeterAltitude}"/>
                         </Paragraph>
                     </TableCell>
                 </TableRow>
