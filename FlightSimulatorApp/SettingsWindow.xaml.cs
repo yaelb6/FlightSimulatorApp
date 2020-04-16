@@ -50,6 +50,7 @@ namespace FlightSimulator
         //This method defines the logic when the checkBox is clicked.
         private void CheckBoxChecked(object sender, RoutedEventArgs e)
         {
+            vm.VmWrongDetails = null;
             vm.ResetToDefaultSettings();
         }
     }
