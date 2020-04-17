@@ -232,20 +232,20 @@ namespace FlightSimulator
             }
             set
             {
-                if ((value > 85) || (value < -85))
+                if ((value > 84.5) || (value < -84.5))
                 {
-                    if (value > 85)
+                    if (value > 84.5)
                     {
-                        value = 85;
+                        value = 84.5;
                     }
                     else
                     {
-                        value = -85;
+                        value = -84.5;
 
                     }
                     ErrorMap = "Error : Invalid map coordinates";
                 }
-                else if ((longitude < 180) && (longitude > -180))
+                else if ((longitude < 175) && (longitude > -175))
                 {
                     ErrorMap = null;
                 }
@@ -261,19 +261,19 @@ namespace FlightSimulator
             }
             set
             {
-                if ((value > 180) || (value < -180))
+                if ((value > 175) || (value < -175))
                 {
-                    if (value > 180)
+                    if (value > 175)
                     {
-                        value = 180;
+                        value = 175;
                     }
                     else
                     {
-                        value = -180;
+                        value = -175;
                     }
                     ErrorMap = "Error : Invalid map coordinates";
                 }
-                else if ((latitude < 85) && (latitude > -85))
+                else if ((latitude < 84.5) && (latitude > -84.5))
                 {
                     ErrorMap = null;
                 }
@@ -370,7 +370,14 @@ namespace FlightSimulator
                         }
                         else
                         {
-                            Heading = telnetClient.Get(message).Substring(0, 5);
+                            if (telnetClient.Get(message).Length > 5)
+                            {
+                                Heading = telnetClient.Get(message).Substring(0, 5);
+                            }
+                            else
+                            {
+                                Heading = telnetClient.Get(message);
+                            }
                         }
                         SlowServer = null;
                     }
@@ -391,7 +398,14 @@ namespace FlightSimulator
                         }
                         else
                         {
-                            VerticalSpeed = telnetClient.Get(message).Substring(0, 5);
+                            if (telnetClient.Get(message).Length > 5)
+                            {
+                                VerticalSpeed = telnetClient.Get(message).Substring(0, 5);
+                            }
+                            else
+                            {
+                                VerticalSpeed = telnetClient.Get(message);
+                            }
                         }
                         SlowServer = null;
                     }
@@ -413,7 +427,14 @@ namespace FlightSimulator
                         }
                         else
                         {
-                            GroundSpeed = telnetClient.Get(message).Substring(0, 5);
+                            if (telnetClient.Get(message).Length > 5)
+                            {
+                                GroundSpeed = telnetClient.Get(message).Substring(0, 5);
+                            }
+                            else
+                            {
+                                GroundSpeed = telnetClient.Get(message);
+                            }
                         }
                         SlowServer = null;
                     }
@@ -435,7 +456,14 @@ namespace FlightSimulator
                         }
                         else
                         {
-                            Airspeed = telnetClient.Get(message).Substring(0, 5);
+                            if (telnetClient.Get(message).Length > 5)
+                            {
+                                Airspeed = telnetClient.Get(message).Substring(0, 5);
+                            }
+                            else
+                            {
+                                Airspeed = telnetClient.Get(message);
+                            }
                         }
                         SlowServer = null;
                     }
@@ -457,7 +485,14 @@ namespace FlightSimulator
                         }
                         else
                         {
-                            GpsAltitude = telnetClient.Get(message).Substring(0, 5);
+                            if (telnetClient.Get(message).Length > 5)
+                            {
+                                GpsAltitude = telnetClient.Get(message).Substring(0, 5);
+                            }
+                            else
+                            {
+                                GpsAltitude = telnetClient.Get(message);
+                            }
                         }
                         SlowServer = null;
                     }
@@ -479,7 +514,14 @@ namespace FlightSimulator
                         }
                         else
                         {
-                            AttitudeRoll = telnetClient.Get(message).Substring(0, 5);
+                            if (telnetClient.Get(message).Length > 5)
+                            {
+                                AttitudeRoll = telnetClient.Get(message).Substring(0, 5);
+                            }
+                            else
+                            {
+                                AttitudeRoll = telnetClient.Get(message);
+                            }
                         }
                         SlowServer = null;
                     }
@@ -501,7 +543,14 @@ namespace FlightSimulator
                         }
                         else
                         {
-                            AttitudePitch = telnetClient.Get(message).Substring(0, 5);
+                            if (telnetClient.Get(message).Length > 5)
+                            {
+                                AttitudePitch = telnetClient.Get(message).Substring(0, 5);
+                            }
+                            else
+                            {
+                                AttitudePitch = telnetClient.Get(message);
+                            }
                         }
                         SlowServer = null;
                     }
@@ -523,7 +572,14 @@ namespace FlightSimulator
                         }
                         else
                         {
-                            AltimeterAltitude = telnetClient.Get(message).Substring(0, 5);
+                            if (telnetClient.Get(message).Length > 5)
+                            {
+                                AltimeterAltitude = telnetClient.Get(message).Substring(0, 5);
+                            }
+                            else
+                            {
+                                AltimeterAltitude = telnetClient.Get(message);
+                            }
                         }
                         SlowServer = null;
                     }

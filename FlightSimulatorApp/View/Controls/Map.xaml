@@ -10,7 +10,7 @@
 >
     <Grid>
         <m:Map Name ="map" CredentialsProvider="Ar_XuklKC6aVPVhtkZMCTx45g6bkRcOd82Upd-fuQVh2jDlISDkw0FSzYcs7UTSA"
-               Center="32.002644, 34.888781" ZoomLevel="1.5">
+               Center="32.002644, 34.888781" ZoomLevel="1.3">
             <m:Pushpin Name="pushPin" Background="Violet" Location="{Binding Path=VmLocation}"/>
 
         </m:Map>

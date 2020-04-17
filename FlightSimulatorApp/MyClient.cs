@@ -21,7 +21,7 @@ namespace FlightSimulator
         public void Connect()
         {
             tcpClient = new TcpClient(connectionIp, connectionPort);
-            tcpClient.ReceiveTimeout = 10000;
+            tcpClient.ReceiveTimeout = 9500;
         }
         //This method set the message to the server.
         public string Set(string message)
